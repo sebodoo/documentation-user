@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
-LESSOPTS      =
+SASSOPTS      =
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -21,9 +21,9 @@ ALLI18NSPHINXOPTS = -d $(BUILDDIR)/doctrees/$(LANG) $(PAPEROPT_$(PAPER)) $(SPHIN
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
-lessfiles = _extensions/odoo_ext/static/*.less
-_extensions/odoo_ext/static/style.css: $(lessfiles)
-	lessc $(LESSOPTS) $(subst .css,.less,$@) $@
+sassfiles = _extensions/odoo_ext/static/*.scss
+_extensions/odoo_ext/static/style.css: $(sassfiles)
+	pysassc $(SASSOPTS) $(subst .css,.scss,$@) $@
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
 
