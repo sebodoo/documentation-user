@@ -1,13 +1,14 @@
-=======================
-Odoo User Documentation
-=======================
 
-.. rst-class:: index-tree
+
+==================
+Odoo Documentation
+==================
+
 
 .. toctree::
-    :titlesonly:
 
-    Index <self>
-    applications
-    practical
-    business
+	applications
+	administration
+	developer
+	services
+	contributing
