@@ -46,7 +46,7 @@ access rights.**
 
 You'll then see the list of your users.
 
-.. image:: media/list_users.png
+.. image:: settings/img/list_users.png
     :align: center
 
 .. note:: The pre-selected filter *Internal Users* shows your paying
@@ -59,7 +59,7 @@ as you are on the userform, go with your mouse cursor on the status
 **Active** (top right). Click on Active and you will notice that the
 status will change to **Inactive** immediately. 
 
-.. image:: media/deactivate_user.gif
+.. image:: settings/img/deactivate_user.gif
     :align: center
 
 
@@ -86,7 +86,7 @@ In your applications' dashboard, you will see all the icons of your
 applications. Click on the application you want to uninstall. Then, on
 the form of the application, click on **Uninstall**.
 
-.. image:: media/uninstall.png
+.. image:: settings/img/uninstall.png
     :align: center
 
 .. danger:: Some applications have dependencies, like Invoicing, eCommerce,
@@ -98,7 +98,7 @@ the form of the application, click on **Uninstall**.
 
 Last, after having checked the warning message (if any), click **Confirm**.
 
-.. image:: media/uninstall_deps.png
+.. image:: settings/img/uninstall_deps.png
     :align: center
 
 You have finished uninstalling your application. 
@@ -124,6 +124,6 @@ Good to know
   be required, etc. This will avoid surprises when uninstalling
   or when receiving your invoices.
 
-.. |settings| image:: media/settings_app.png
-.. |browse_apps| image:: media/browse_apps.png
-.. |browse_users| image:: media/browse_users.png
+.. |settings| image:: settings/img/settings_app.png
+.. |browse_apps| image:: settings/img/browse_apps.png
+.. |browse_users| image:: settings/img/browse_users.png

@@ -1,24 +1,27 @@
+
+
 ============
 Applications
 ============
 
-.. toctree::
-   :titlesonly:
 
-   accounting
-   crm
-   sales
-   website
-   ecommerce
-   discuss
-   purchase
-   inventory
-   manufacturing
-   point_of_sale
-   project
-   helpdesk
-   livechat/livechat
-   expense/expense
-   general
-   iot
-   mobile/firebase
+.. toctree::
+
+	applications/accounting
+	applications/crm
+	applications/sales
+	applications/website
+	applications/ecommerce
+	applications/discuss
+	applications/purchase
+	applications/inventory
+	applications/manufacturing
+	applications/point_of_sale
+	applications/project
+	applications/helpdesk
+	applications/livechat/livechat
+	applications/expense/expense
+	applications/general
+	applications/iot
+	applications/mobile/firebase
+	applications/settings
