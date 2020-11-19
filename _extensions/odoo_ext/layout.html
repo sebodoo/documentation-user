@@ -190,7 +190,7 @@
         <div class="collapse navbar-collapse" id="o_sub-menu">
           <ol class="o_breadcrumb breadcrumb nav navbar-left">
               {% block breadcrumb_desktop %}
-              {% include "breadcrumb_list.html" %}
+                {% include "jinja_templates/breadcrumb_list.html" %}
               {% endblock %}
           </ol>
 
@@ -204,7 +204,7 @@
             {% endif%}
 
             {% block switchers_desktop %}
-            {% include "switchers_list.html" %}
+              {% include "jinja_templates/switchers_list.html" %}
             {% endblock %}
           </ul>
 
@@ -214,7 +214,8 @@
             {% endif %}
 
             {% block sub_menu_desktop %}
-            {% include "sub-menu_list.html" %}
+              {% include "jinja_templates/sub-menu_list.html" %}
+              {% include "jinja_templates/searchbox.html" %}
             {% endblock %}
 
             {% if languages or versions %}
