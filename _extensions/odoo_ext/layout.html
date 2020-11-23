@@ -236,8 +236,8 @@
           {% if 'has-toc' not in meta and not (pagename in toc) %}
           <aside>
             <div class="navbar-aside text-center">
-              {{ toc }} {# this is the local toc #}
-              {#} {{ toctree() }} {#} {# this is the GLOBAL toc #}
+              {#} {{ toc }} {#} {# this is the local toc #}
+              {{ toctree() }} {# this is the GLOBAL toc #}
               {% if github_link %}
               <p class="gith-container"><a href="{{ github_link(mode='edit') }}" class="gith-link">
                   Edit on GitHub
