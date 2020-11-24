@@ -11,9 +11,9 @@
             {% if loop.first %}
                 <li><a href="{{ pathto(master_doc) }}">{{ master_doc_short_name }}</a></li>
             {% else %}
-                {% if loop.index == 2 %}
+                {#}{% if loop.index == 2 %}{#}
                     <li><a href="{{ parent.link|e }}">{{parent.title}}</a></li>
-                {% endif %}
+                {#}{% endif %}{#}
             {% endif %}
         {% else %}
             <li><a href="{{ pathto(master_doc) }}">{{ master_doc_short_name }}</a></li>
