@@ -7,9 +7,9 @@
 {% endblock %}
 
 {% set classes = [] %}
-{% if pagename == master_doc %}
+{#}{% if pagename == master_doc %}
   {% set classes = classes + ['index'] %}
-{% endif %}
+{% endif %}{#}
 
 {% if 'code-column' in meta %}
   {% set classes = classes + ['has_code_col'] %}
@@ -231,9 +231,9 @@
     {% set container = 'container' %}
     {% endif %}
       <main class="container {{ ' '.join(classes) }}">
-        {% if pagename != master_doc %}
+        {#}{% if pagename != master_doc %}{#}
         <div class="o_content row">
-          {% if 'has-toc' not in meta and not (pagename in toc) %}
+          {#}{% if 'has-toc' not in meta and not (pagename in toc) %}{#}
           <aside>
             <div class="navbar-aside text-center">
               {#} {{ toc }} {#} {# this is the local toc #}
@@ -245,13 +245,14 @@
               {% endif %}
             </div>
           </aside>
-          {% endif %}
-          <article class="doc-body {% if 'has-toc' in meta %}doc-toc{% endif %}{% if pagename in toc%}index-category{% endif %}">
-            {% endif %}
+          {#}{% endif %}{#}
+          <article class="doc-body index-category">
+            {#}{% endif %}{#}
             {% block body %} {% endblock %}
-          {% if pagename != master_doc %}</article>
+          {#}{% if pagename != master_doc %}{#}
+          </article>
         </div>
-        {% endif %}
+        {#}{% endif %}{#}
         <div id="mask"></div>
       </main>
   </div>
