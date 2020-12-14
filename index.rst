@@ -9,6 +9,5 @@ Odoo Documentation
 
 	applications
 	administration
-	developer
 	services
 	contributing
