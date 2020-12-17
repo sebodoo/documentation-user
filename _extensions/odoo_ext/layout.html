@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% set classes = [] %}
-{#}{% if pagename == master_doc %}
+{% if pagename == master_doc %}
   {% set classes = classes + ['index'] %}
-{% endif %}{#}
+{% endif %}
 
 {% if 'code-column' in meta %}
   {% set classes = classes + ['has_code_col'] %}
@@ -73,7 +73,7 @@
       {% if pagename == master_doc %}
       <div class="row">
         <div class="col-md-4">
-          <h2>Getting Started</h2>
+          <h2 class="text-center text-secondary">Getting Started</h2>
           <ul>
             <li><a href="">Overview of Odoo</a>
               <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
@@ -88,7 +88,7 @@
           </ul>
         </div>
         <div class="col-md-4">
-          <h2>Installing Odoo</h2>
+          <h2 class="text-center text-secondary">Installing Odoo</h2>
           <ul>
             <li><a href="">Overview of Odoo</a>
               <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
@@ -103,7 +103,7 @@
           </ul>
         </div>
         <div class="col-md-4">
-          <h2>Basic Usage</h2>
+          <h2 class="text-center text-secondary">Basic Usage</h2>
           <ul>
             <li><a href="">Overview of Odoo</a>
               <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
@@ -120,7 +120,7 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <h2>Getting Started</h2>
+          <h2 class="text-center text-secondary">Getting Started</h2>
           <ul>
             <li><a href="">Overview of Odoo</a>
               <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
@@ -135,7 +135,7 @@
           </ul>
         </div>
         <div class="col-md-4">
-          <h2>Installing Odoo</h2>
+          <h2 class="text-center text-secondary">Installing Odoo</h2>
           <ul>
             <li><a href="">Overview of Odoo</a>
               <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
@@ -150,7 +150,7 @@
           </ul>
         </div>
         <div class="col-md-4">
-          <h2>Basic Usage</h2>
+          <h2 class="text-center text-secondary">Basic Usage</h2>
           <ul>
             <li><a href="">Overview of Odoo</a>
               <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>

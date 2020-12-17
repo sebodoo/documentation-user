@@ -75,6 +75,9 @@ body {
     border-color: #18856f !important; }
     body .btn-primary:focus, body .btn-primary:hover, body .btn-primary:active {
       background-color: #18856f !important; }
+  body h2 {
+    font-size: 24px;
+    font-weight: 600; }
 
 .o_main_header {
   grid-area: header;
@@ -89,6 +92,7 @@ body {
   width: 30%;
   max-width: 400px;
   height: 100vh;
+  overflow-y: auto;
   position: fixed;
   padding: 20px 50px;
   background-color: #62495b; }

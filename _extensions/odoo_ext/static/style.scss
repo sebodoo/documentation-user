@@ -1,3 +1,5 @@
+@import "scss/bootstrap_scss/bootstrap.scss";
+@import "scss/bootstrap_overridden.scss";
 @import "scss/_primary_variables.scss";
 @import "scss/_variables.scss";
 @import "scss/_typography.scss";
@@ -25,6 +27,10 @@ body {
     		background-color: $color-alpha-dark !important;
     	}
     }
+    h2 {
+    	font-size: 24px;
+    	font-weight: $fw_semibold;
+    }
 }
 
 .o_main_header{
@@ -43,6 +49,7 @@ body {
   	width: 30%;
 	max-width: 400px;
 	height: 100vh;
+	overflow-y: auto;
 	position: fixed;
 	padding:20px 50px;
 	background-color:$o-violet-darker ;
