@@ -4,7 +4,7 @@ $grid-breakpoint-xxl: 1400px;
 $grid-breakpoint-xxxl: 1680px;
 
 $container-max-width-xxl:1380px;
-$container-max-width-xxxl: 1600px;
+$container-max-width-xxxl: 1560px;
 
 // Paths and Prefixes
 // ==============================================
@@ -149,13 +149,6 @@ $o-color-palettes: (
 // As a base font, we use bts4 native font stack:
 // website/static/src/scss/primary_variables.scss
 
-$o-theme-fonts: set-nth($o-theme-fonts, 1, (-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Noto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"));
-$o-theme-font-urls: set-nth($o-theme-font-urls, 1, null);
-$o-theme-font-names: set-nth($o-theme-font-names, 1, "Apercu");
-
-$o-theme-fonts: set-nth($o-theme-fonts, 2, ("Inter", sans-serif));
-$o-theme-font-urls: set-nth($o-theme-font-urls, 2, 'Inter:300,300i,500,500i,600,600i,700,700i');
-$o-theme-font-names: set-nth($o-theme-font-names, 2, 'Inter');
 
 $o-website-values-palettes: (
     (

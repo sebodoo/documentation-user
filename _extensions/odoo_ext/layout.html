@@ -1,8 +1,11 @@
 {% extends "basic/layout.html" %}
 {% set html5_doctype = True %}
+
 {% block scripts %}
   {{ super() }}
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+          crossorigin="anonymous"></script>
 {% endblock %}
 
 {% set classes = [] %}
@@ -51,24 +54,122 @@
 
 {%- block header -%}
   {% include "jinja_templates/navigation.html" %}
-  <header class="o_main_header container {{ ' '.join(classes) }}">
-    {% include "jinja_templates/searchbox.html" %}
-    <div class="d-inline-flex">
-        <div class="col-4">{% include "jinja_templates/language_switcher.html" %}</div>
-        <div class="col">{% include "jinja_templates/version_switcher.html" %}</div>
+  <header class="o_main_header container border-bottom {{ ' '.join(classes) }}">
+    <div class="row justify-content-between">
+        {% include "jinja_templates/searchbox.html" %}
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col">{% include "jinja_templates/language_switcher.html" %}</div>
+            <div class="col">{% include "jinja_templates/version_switcher.html" %}</div>
+            <button class="btn btn-primary">Try Odoo for FREE</button>
+          </div>
+        </div>
     </div>
   </header>
 {%- endblock -%}
 
 {%- block content -%}
-    <main class="container {{ ' '.join(classes) }}">
-      {% if pagename != master_doc %}
-        <div class="o_content row">
-          {% include "jinja_templates/sidebar.html" %}
+    <main class="container pt-5 {{ ' '.join(classes) }}">
+      {% if pagename == master_doc %}
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Getting Started</h2>
+          <ul>
+            <li><a href="">Overview of Odoo</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Requirements</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">New to Odoo – Where to start </a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Version 14</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">History</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h2>Installing Odoo</h2>
+          <ul>
+            <li><a href="">Overview of Odoo</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Requirements</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">New to Odoo – Where to start </a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Version 14</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">History</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h2>Basic Usage</h2>
+          <ul>
+            <li><a href="">Overview of Odoo</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Requirements</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">New to Odoo – Where to start </a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Version 14</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">History</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Getting Started</h2>
+          <ul>
+            <li><a href="">Overview of Odoo</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Requirements</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">New to Odoo – Where to start </a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Version 14</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">History</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h2>Installing Odoo</h2>
+          <ul>
+            <li><a href="">Overview of Odoo</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Requirements</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">New to Odoo – Where to start </a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Version 14</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">History</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h2>Basic Usage</h2>
+          <ul>
+            <li><a href="">Overview of Odoo</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Requirements</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">New to Odoo – Where to start </a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">Version 14</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+              <li><a href="">History</a>
+              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.</span></li>
+          </ul>
+        </div>
+      </div>
+      {% else %}
+        <div class="container o_content row">
+          <!-- {% include "jinja_templates/sidebar.html" %} -->
           <article class="doc-body {% if 'has-toc' in meta %}doc-toc{% endif %}{% if pagename in toc%}index-category{% endif %}">
-      {% endif %}
             {% block body %} {% endblock %}
-      {% if pagename != master_doc %}
           </article>
         </div>
       {% endif %}

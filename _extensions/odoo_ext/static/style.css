@@ -1,157 +1,4 @@
 @font-face {
-  font-family: 'icomoon';
-  src: url("fonts/icomoon.eot?6nfv4z");
-  src: url("fonts/icomoon.eot?6nfv4z#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?6nfv4z") format("truetype"), url("fonts/icomoon.woff?6nfv4z") format("woff"), url("fonts/icomoon.svg?6nfv4z#icomoon") format("svg");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block; }
-
-[class^="i-"], [class*=" i-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: never;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-.i-marketing:before {
-  content: "\e900"; }
-
-.i-sales:before {
-  content: "\e901"; }
-
-.i-websites:before {
-  content: "\e902"; }
-
-.i-users:before {
-  content: "\e903"; }
-
-.i-productivity:before {
-  content: "\e904"; }
-
-.i-apps:before {
-  content: "\e905"; }
-
-.i-themes:before {
-  content: "\e906"; }
-
-.i-o-tour:before {
-  content: "\e907"; }
-
-.i-education:before {
-  content: "\e908"; }
-
-.i-documentation:before {
-  content: "\e909"; }
-
-.i-o-education:before {
-  content: "\e90a"; }
-
-.i-cards:before {
-  content: "\e90b"; }
-
-.i-hr:before {
-  content: "\e90c"; }
-
-.i-dev:before {
-  content: "\e90d"; }
-
-.i-partner:before {
-  content: "\e90e"; }
-
-.i-o-odoo:before {
-  content: "\e90f"; }
-
-.i-support:before {
-  content: "\e910"; }
-
-.i-job:before {
-  content: "\e911"; }
-
-.i-contact:before {
-  content: "\e912"; }
-
-.i-certificate:before {
-  content: "\e913"; }
-
-.i-tutorial:before {
-  content: "\e914"; }
-
-.i-doc-apps:before {
-  content: "\e915"; }
-
-.i-doc-admin:before {
-  content: "\e916"; }
-
-.i-doc-dev:before {
-  content: "\e917"; }
-
-.i-doc-service:before {
-  content: "\e918"; }
-
-.i-doc-contribute:before {
-  content: "\e919"; }
-
-.i-showcase:before {
-  content: "\e91a"; }
-
-.i-features:before {
-  content: "\e91b"; }
-
-.i-overview:before {
-  content: "\e91c"; }
-
-.i-operations:before {
-  content: "\e91d"; }
-
-.i-apps-2:before {
-  content: "\e91e"; }
-
-.i-o-services:before {
-  content: "\e91f"; }
-
-.i-install:before {
-  content: "\e920"; }
-
-.i-basics:before {
-  content: "\e921"; }
-
-.i-tutorial-2:before {
-  content: "\e922"; }
-
-.i-advanced:before {
-  content: "\e923"; }
-
-.i-o-help:before {
-  content: "\e924"; }
-
-.i-shop:before {
-  content: "\e925"; }
-
-.i-cart:before {
-  content: "\e926"; }
-
-.i-link:before {
-  content: "\e927"; }
-
-.i-edit:before {
-  content: "\e928"; }
-
-.i-chevron-right:before {
-  content: "\e929"; }
-
-.i-chevron-left:before {
-  content: "\e92a"; }
-
-.i-search:before {
-  content: "\e92b"; }
-
-@font-face {
   font-family: Inter;
   src: url("fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype-variations");
   font-weight: 1 999; }
@@ -159,7 +6,8 @@
 html body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: Inter, Helvetica, sans-serif; }
+  font-family: Inter, Helvetica, sans-serif;
+  font-weight: 400; }
 
 .display-1, h1, .h1 {
   letter-spacing: -0.02em; }
@@ -215,21 +63,28 @@ a {
 
 @media (min-width: 1680px) {
   .container {
-    max-width: 1600px; } }
+    max-width: 1560px; } }
 
 body {
   display: grid;
-  grid-template-columns: 400px auto auto 400px;
+  grid-template-columns: 400px auto auto 350px;
   grid-template-rows: 100px auto;
   grid-template-areas: "nav header header header" "nav main main sidebar" "nav footer footer footer"; }
+  body .btn-primary {
+    background-color: #00a09d !important;
+    border-color: #18856f !important; }
+    body .btn-primary:focus, body .btn-primary:hover, body .btn-primary:active {
+      background-color: #18856f !important; }
 
 .o_main_header {
   grid-area: header;
   display: flex;
   height: 100px;
   align-items: center; }
+  .o_main_header > .row {
+    width: 100%; }
 
-.side_nav {
+.o_side_nav {
   grid-area: nav;
   width: 30%;
   max-width: 400px;
@@ -237,15 +92,29 @@ body {
   position: fixed;
   padding: 20px 50px;
   background-color: #62495b; }
-  .side_nav .logo {
-    height: 60px;
-    display: flex;
-    align-items: center; }
+  .o_side_nav > ul {
+    padding-left: 0px; }
+  .o_side_nav ul {
+    list-style: none;
+    padding-top: 15px; }
+    .o_side_nav ul li {
+      padding: 15px 0; }
+      .o_side_nav ul li a {
+        color: #ffffff;
+        text-decoration: none;
+        opacity: .5; }
+        .o_side_nav ul li a.current, .o_side_nav ul li a:hover {
+          opacity: 1; }
+    .o_side_nav ul > .toctree-l1 a:before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      vertical-align: middle; }
 
-.search {
-  position: relative;
-  width: 400px; }
-  .search .btn {
+.o_search {
+  position: relative; }
+  .o_search .btn {
     position: absolute;
     top: 50%;
     right: 8px;

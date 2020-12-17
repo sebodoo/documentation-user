@@ -11,12 +11,20 @@
 }
 body {
 	display: grid;
-	grid-template-columns: 400px auto auto 400px;
+	grid-template-columns: 400px auto auto 350px;
   	grid-template-rows: 100px auto;
 	grid-template-areas:
     "nav header header header"
     "nav main main sidebar"
     "nav footer footer footer";
+
+    .btn-primary {
+    	background-color: $color-alpha !important;
+    	border-color: $color-alpha-dark !important;
+    	&:focus, &:hover, &:active {
+    		background-color: $color-alpha-dark !important;
+    	}
+    }
 }
 
 .o_main_header{
@@ -24,9 +32,13 @@ body {
 	display: flex;
 	height: 100px;
 	align-items: center;
+
+	> .row {
+		width: 100%;
+	}
 }
 
-.side_nav {
+.o_side_nav {
   	grid-area: nav;
   	width: 30%;
 	max-width: 400px;
@@ -34,16 +46,41 @@ body {
 	position: fixed;
 	padding:20px 50px;
 	background-color:$o-violet-darker ;
-	.logo {
-		height: 60px;
-		display: flex;
-		align-items: center;
+	> ul {
+		padding-left: 0px;
+	}
+	ul {
+		list-style: none;
+		padding-top: 15px;
+
+		li {
+			padding: 15px 0;
+			a{
+				color: #ffffff;
+				text-decoration: none;
+				opacity: .5;
+				&.current, &:hover {
+					opacity: 1;
+				}
+			}
+		}
+
+		> .toctree-l1 {
+			a:before {
+				content:"";
+				width: 30px;
+				height: 30px;
+				display: inline-block;
+    			vertical-align: middle;
+			}
+
+		}
+
 	}
 }
 
-.search{
+.o_search{
 	position: relative;
-    width: 400px;
 	.btn{
 		position: absolute;
 		top: 50%;

@@ -1,6 +1,6 @@
 {%- if pagename != "search" and builder != "singlehtml" %}
-<div id="searchbox" role="search">
-    <form class="search" action="{{ pathto('search') }}" method="get">
+<div id="searchbox" class="col-md-6" role="search">
+    <form class="o_search" action="{{ pathto('search') }}" method="get">
         <input type="text" class="form-control rounded-pill" name="q" id="q" placeholder="What are you looking for?" />
         <input type="hidden" name="area" value="default" />
         <input type="hidden" name="check_keywords" value="yes" />
