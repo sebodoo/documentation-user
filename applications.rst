@@ -6,6 +6,8 @@ Applications
 
 
 .. toctree::
+	:maxdepth: 3
+	:titlesonly:
 
 	applications/accounting
 	applications/crm
