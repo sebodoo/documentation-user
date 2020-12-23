@@ -285,7 +285,7 @@ class BootstrapTranslator(HTML5Translator):
         if uri in self.builder.images:
             uri = posixpath.join(self.builder.imgpath,
                                  self.builder.images[uri])
-        attrs = {'src': uri, 'class': 'img-responsive'}
+        attrs = {'src': uri, 'class': 'img-fluid'}
         if 'alt' in node:
             attrs['alt'] = node['alt']
         if 'align' in node:

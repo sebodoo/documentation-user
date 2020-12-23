@@ -8,7 +8,7 @@ section#terms-and-conditions table th {
     text-align: center;
 }
 
-section#terms-and-conditions table img.img-responsive {
+section#terms-and-conditions table img.img-fluid {
     margin: 0px;
 }
 
