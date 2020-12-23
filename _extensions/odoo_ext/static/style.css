@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v5.0.0-beta1 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -7503,8 +7504,11 @@ header.o_main_header {
       height: 90px;
       display: flex;
       align-items: center; }
+      header.o_main_header .o_logo_wrapper > .o_logo img {
+        margin-top: -12px;
+        margin-right: 1rem; }
       header.o_main_header .o_logo_wrapper > .o_logo span {
-        font-size: 1.2rem; }
+        font-size: 2rem; }
   header.o_main_header .o_search {
     position: relative;
     width: 100%;
@@ -7520,6 +7524,17 @@ header.o_main_header {
       -ms-transform: translateY(-50%);
       -o-transform: translateY(-50%);
       transform: translateY(-50%); }
+      header.o_main_header .o_search .btn:before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("img/icons/search.svg");
+        margin: 0;
+        opacity: .3; }
 
 .o_side_nav {
   grid-area: nav;
@@ -7531,7 +7546,9 @@ header.o_main_header {
   padding-top: 3rem;
   padding-left: 3rem;
   background-color: white;
-  z-index: 10; }
+  z-index: 10;
+  scrollbar-width: thin;
+  scrollbar-color: #603c5e transparent; }
   .o_side_nav > ul {
     padding-left: 30px !important; }
     .o_side_nav > ul > li {
@@ -7561,13 +7578,20 @@ header.o_main_header {
       background-image: url("img/icons/doc-apps.svg");
       margin: 0 1rem 0 0;
       margin-left: -30px; }
+  .o_side_nav::-webkit-scrollbar {
+    width: 5px; }
+  .o_side_nav::-webkit-scrollbar-track {
+    background: #fff; }
+  .o_side_nav::-webkit-scrollbar-thumb {
+    background-color: #603c5e;
+    border-radius: 0; }
 
 #wrap {
   position: relative;
   top: 90px;
   display: grid;
   grid-template-columns: 350px auto 25%;
-  column-gap: 3rem;
+  column-gap: 2rem;
   grid-template-areas: "nav main sidebar" "footer footer footer"; }
   #wrap main {
     padding-right: 3rem; }
@@ -7653,7 +7677,7 @@ header.o_main_header {
           background-size: contain;
           background-repeat: no-repeat;
           background-image: url("img/icons/edit.svg");
-          margin: 0 1rem 0 0; }
+          margin: 0 0.5rem 0 0; }
       #wrap main article h1, #wrap main article .h1 {
         margin-bottom: 2rem; }
       #wrap main article h2, #wrap main article .h2 {
