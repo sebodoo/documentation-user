@@ -1,10 +1,8 @@
 <nav class="o_side_nav">
-	<div class="o_main_header">
-		<h1 class="o_logo">
+	<div class="o_logo">
 			<a href="{{ pathto(master_doc) }}">
-				<img src="{{ pathto('_static/img/logos/odoo_logo.svg', 1) }}" height="30" class="mt-n1 mr-2" alt="Odoo"/><span class="text-white fw_extralight">docs</span>
+				<img src="{{ pathto('_static/img/logos/odoo_logo.svg', 1) }}" height="40" class="mt-n1 mr-2" alt="Odoo"/><span class="text-white fw_extralight">docs</span>
 			</a>
-		</h1>
 	</div>
     {{ toctree(titles_only=True) }} {# this is the GLOBAL toc #}
 </nav>

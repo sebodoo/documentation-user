@@ -23,7 +23,7 @@ $country-events-list-gap : 15px;
 // Odoo Colours
 // ==============================================
 $o-violet-dark           : #875A7B;
-$o-violet-darker         : #5E4C67;
+$o-violet-darker         : #603c5e;
 
 $o-inverse-lightest      : #98A6B0;
 $o-inverse-light         : #8B979F;
@@ -67,83 +67,6 @@ $fw_semibold   : 600;
 $fw_bold       : 800;
 $fw_extrabold  : 900;
 
-$o-theme-color-palettes: (
-    (
-        'success': #2CBB70,
-        'info': #4B9EB6,
-        'warning': #F79B5B,
-        'danger': #D9534F,
-
-        'default': #adb5bd,    // $gray-500
-        'secondary': #adb5bd,  // $gray-500
-
-        'violet-dark': $o-violet-dark,
-        'violet-darker': $o-violet-darker,
-
-        'inverse-lightest': $o-inverse-lightest,
-        'inverse-light': $o-inverse-light,
-        'inverse': $o-inverse,
-        'inverse-dark': $o-inverse-dark,
-        'inverse-darker': $o-inverse-darker,
-
-        'alpha': $color-alpha,
-        'alpha-dark': $color-alpha-dark,
-        'alpha-light': $color-alpha-light,
-        'alpha-lightest': $color-alpha-lightest,
-
-        'beta': $color-beta,
-        'beta-dark': $color-beta-dark,
-        'beta-light': $color-beta-light,
-        'beta-lightest': $color-beta-lightest,
-
-        'gamma': $color-gamma,
-        'gamma-dark': $color-gamma-dark,
-        'gamma-light': $color-gamma-light,
-        'gamma-lightest': $color-gamma-lightest,
-
-        'delta': $color-delta,
-        'delta-dark': $color-delta-dark,
-        'delta-light': $color-delta-light,
-        'delta-lightest': $color-delta-lightest,
-
-        'epsilon': $color-epsilon,
-        'epsilon-dark': $color-epsilon-dark,
-        'epsilon-light': $color-epsilon-light,
-        'epsilon-lightest': $color-epsilon-lightest,
-    ),
-);
-$o-gray-color-palettes: (
-    (
-        'white': white,
-        "100": #f8f9fa,
-        "200": #e9ecef,
-        "300": #dee2e6,
-        "400": #ced4da,
-        "500": #adb5bd,
-        "600": #6c757d,
-        "700": #495057,
-        "800": #343a40,
-        "900": #212529,
-        'black': black,
-
-        // Back-compatibilty: Pre-BTS4 grayscale
-        // NOTE: these classes should NOT be used anymore
-        'gray-lightest': #f8f9fa, // $gray-100
-        'gray-lighter': #e9ecef,  // $gray-200
-        'gray-light': #dee2e6,    // $gray-300
-        'gray': #adb5bd,          // $gray-500
-        'gray-dark': #6c757d,     // $gray-600
-        'gray-darker': #343a40,   // $gray-800
-        'gray-darkest': #212529,  // $gray-900
-    ),
-);
-$o-color-palettes: (
-    (
-        'text': #343a40, // $gray-800
-        'h1'  : #212529, // $gray-900
-    ),
-);
-
 // Fonts
 // ===============================================
 // As a base font, we use bts4 native font stack:
@@ -171,7 +94,7 @@ $o-website-values-palettes: (
         'navbar-font':                      'Inter',
         'buttons-font':                     'Inter',
 
-        'font-size-base':                   0.9375rem,
+        'font-size-base':                   0.875rem,
 
         'link-underline':                   'never',
 
@@ -253,12 +176,8 @@ $o-color-palettes: (
     ),
 );
 
-// Compatibility
-
-$o-support-13-0-color-system:               'true';
-
 $o-violet-dark:                             #875a7b;
-$o-violet-darker:                           #62495b;
+$o-violet-darker:                           #603c5e;
 
 $o-inverse-lightest:                        #98a6b0;
 $o-inverse-light:                           #8b979f;
@@ -266,8 +185,8 @@ $o-inverse:                                 #47738f;
 $o-inverse-dark:                            #5b7687;
 $o-inverse-darker:                          #485761;
 
-$color-alpha:                               #00a09d;
-$color-alpha-dark:                          #18856f;
+$color-alpha:                               #00A19B;
+$color-alpha-dark:                          #00615F;
 $color-alpha-light:                         #26d1af;
 $color-alpha-lightest:                      #2aebc4;
 
@@ -292,6 +211,32 @@ $color-epsilon-light:                       #f07346;
 $color-epsilon-lightest:                    #ff8d63;
 
 $header-link-normal:                        #343a40;
+
+$gray-lightest:                             #F9F9F9;
+$gray-lighter:                              #F2F2F2;
+$gray-light:                                #d5d5d5;
+$gray:                                      #888888;
+$gray-dark:                                 #707070;
+$gray-darker:                               #282F33;
+$gray-darkest:                              shade-color($gray-darker, 30%);
+
+
+$primary:                                   #00A19B;
+$secondary:                                 #603c5e;
+
+$brand-primary :                            $o-violet-dark;
+$brand-success :                            #50AF51;
+$brand-info:                                #4B9EB6;
+$brand-warning :                            #F0AD4E;
+$brand-danger  :                            #D9534F;
+
+$doc_paper_dark:                            $gray-lighter;
+$doc_paper:                                 #ffffff;
+$doc_exercise:                              #938E94;
+$doc_code-bg:                               $gray-darker;
+$doc_lime:                                  #CDDC39;
+$doc_orange:                                #FF5722;
+$doc_cyan:                                  #00A19B;
 
 $o-theme-color-palettes: (
     (
@@ -333,40 +278,14 @@ $o-theme-color-palettes: (
     ),
 );
 
-$o-gray-color-palettes: (
-    (
-        'white':                            #ffffff,
-        '100':                              #f8f9fa,
-        '200':                              #e9ecef,
-        '300':                              #dee2e6,
-        '400':                              #ced4da,
-        '500':                              #adb5bd,
-        '600':                              #6c757d,
-        '700':                              #495057,
-        '800':                              #343a40,
-        '900':                              #212529,
-        'black':                            #000000,
-
-        // Back-compatibilty: Pre-BTS4 grayscale
-        // NOTE: these classes should NOT be used anymore
-        'gray-lightest':                    #f8f9fa, // 100
-        'gray-lighter':                     #e9ecef, // 200
-        'gray-light':                       #dee2e6, // 300
-        'gray':                             #adb5bd, // 500
-        'gray-dark':                        #6c757d, // 600
-        'gray-darker':                      #343a40, // 800
-        'gray-darkest':                     #212529, // 900
-    ),
-);
-
 //------------------------------------------------------------------------------
 // Misc
 //------------------------------------------------------------------------------
 
 // Header
-$w-header-height:                           50px;
-$w-sub-nav-height:                          40px;
-$w-header-white:                            #fcfcfc;
+$w-header-height:                           90px;
+$w-side-nav-width:                          350px;
+$w-header-white:                            #ffffff;
 
 // Paths and Prefixes
 $website-img-base-url:                      "../img/";
