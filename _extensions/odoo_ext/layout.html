@@ -56,11 +56,9 @@
   {% include "jinja_templates/navigation.html" %}
   <header class="o_main_header border-bottom">
         <div class="o_logo_wrapper">
-            <div class="o_logo">
-                    <a href="{{ pathto(master_doc) }}">
-                        <img src="{{ pathto('_static/img/logos/odoo_logo.svg', 1) }}" height="40" class="mt-n1 mr-2" alt="Odoo"/><span class="text-white fw_extralight">docs</span>
-                    </a>
-            </div>
+              <a href="{{ pathto(master_doc) }}" class="o_logo">
+                  <img src="{{ pathto('_static/img/logos/odoo_logo.svg', 1) }}" height="30" class="mt-n1 mr-2" alt="Odoo"/><span class="text-dark fw_extralight">docs</span>
+              </a>
         </div>
         {% include "jinja_templates/searchbox.html" %}
         {% include "jinja_templates/language_switcher.html" %}

@@ -7503,6 +7503,8 @@ header.o_main_header {
       height: 90px;
       display: flex;
       align-items: center; }
+      header.o_main_header .o_logo_wrapper > .o_logo span {
+        font-size: 1.2rem; }
   header.o_main_header .o_search {
     position: relative;
     width: 100%;
@@ -7522,17 +7524,14 @@ header.o_main_header {
 .o_side_nav {
   grid-area: nav;
   width: 350px;
-  height: 100vh;
+  height: calc(100vh - 90px);
   overflow-y: auto;
   position: fixed;
+  top: 90px;
+  padding-top: 3rem;
   padding-left: 3rem;
-  background-color: #603c5e;
-  z-index: 9999999; }
-  .o_side_nav > .o_logo {
-    height: 90px;
-    margin-bottom: 3rem;
-    display: flex;
-    align-items: center; }
+  background-color: white;
+  z-index: 10; }
   .o_side_nav > ul {
     padding-left: 30px !important; }
     .o_side_nav > ul > li {
@@ -7543,7 +7542,7 @@ header.o_main_header {
     .o_side_nav ul li a {
       display: block;
       padding: .5rem 0;
-      color: #ffffff;
+      color: #603c5e;
       text-decoration: none;
       opacity: .5; }
       .o_side_nav ul li a.current, .o_side_nav ul li a:hover {
@@ -7568,7 +7567,6 @@ header.o_main_header {
   top: 90px;
   display: grid;
   grid-template-columns: 350px auto 25%;
-  grid-template-rows: 1fr 1fr;
   column-gap: 3rem;
   grid-template-areas: "nav main sidebar" "footer footer footer"; }
   #wrap main {
@@ -7608,8 +7606,7 @@ header.o_main_header {
       #wrap main.index h2[class*="o_title_"].o_title_advanced:before, #wrap main.index .h2[class*="o_title_"].o_title_advanced:before {
         background-image: url("img/icons/tech-knowledge.svg"); }
     #wrap main.index ul {
-      list-style: none;
-      padding: 1.8rem; }
+      list-style: none; }
       #wrap main.index ul > li {
         padding-bottom: 1.5rem; }
         #wrap main.index ul > li a {
@@ -7764,3 +7761,5 @@ footer {
         background-repeat: no-repeat;
         background-image: url("img/icons/help.svg");
         margin: 0 1rem 0 0; }
+  footer .o_footer_nav {
+    display: flex; }

@@ -36,6 +36,9 @@ header.o_main_header{
             height: $w-header-height;
             display: flex;
             align-items: center;
+            span {
+                font-size: 1.2rem;
+            }
         }
     }
     .o_search{
@@ -52,19 +55,14 @@ header.o_main_header{
 .o_side_nav {
     grid-area: nav;
     width: $w-side-nav-width;
-    height: 100vh;
+    height: calc(100vh - #{$w-header-height});
     overflow-y: auto;
     position: fixed;
+    top:$w-header-height;
+    padding-top: 3rem;
     padding-left: 3rem;
-    background-color: $o-violet-darker ;
-    z-index: 9999999;
-
-    > .o_logo {
-        height: $w-header-height;
-        margin-bottom: 3rem;
-        display: flex;
-        align-items: center;
-    }
+    background-color: lighten($o-violet-dark, 70%) ;
+    z-index: 10;
 
     > ul {
         padding-left: 30px !important;
@@ -80,7 +78,7 @@ header.o_main_header{
             a{
                 display: block;
                 padding: .5rem 0;
-                color: #ffffff;
+                color: $o-violet-darker;
                 text-decoration: none;
                 opacity: .5;
                 &.current, &:hover {
@@ -109,7 +107,6 @@ header.o_main_header{
     top: $w-header-height;
     display: grid;
     grid-template-columns: $w-side-nav-width auto 25%;
-    grid-template-rows: 1fr 1fr;
     column-gap: 3rem;
     grid-template-areas:
     "nav main sidebar"
@@ -160,7 +157,7 @@ header.o_main_header{
             }
             ul {
                 list-style: none;
-                padding: 1.8rem;
+                // padding: 1.8rem;
                 > li {
                     padding-bottom: 1.5rem;
                     a {
@@ -350,6 +347,6 @@ footer{
 
     }
     .o_footer_nav {
-        // padding-left: $w-side-nav-width;
+        display: flex;
     }
 }
