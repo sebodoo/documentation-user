@@ -39,16 +39,29 @@ needs_sphinx = '1.6.7'
 extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.todo',
+
+    # Odoo sphinx theme
     'odoo_ext',
+
+    # Automatic python doc generation (autodoc, automodule, autoattribute, ...)
     'sphinx.ext.autodoc',
+
+    # Generate automatic links to the documentation of other projects
     'sphinx.ext.intersphinx',
+
+    # github links generation
     'sphinx.ext.linkcode',
-    'embedded_video',
     'github_link',
+
+    # Youtube and Vimeo videos integration (.. youtube & .. vimeo rst commands)
+    'embedded_video',
+
     # 'autojsdoc.ext',
     'html_domain',
     'redirects',
     'exercise_admonition',
+
+    # Display some exercises solutions as patch files.
     'patchqueue',
 ]
 
