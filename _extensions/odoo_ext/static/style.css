@@ -7548,10 +7548,10 @@ header.o_main_header {
   position: fixed;
   top: 90px;
   left: -100%;
-  -webkit-transition: all 3s ease 0s;
-  -moz-transition: all 3s ease 0s;
-  -o-transition: all 3s ease 0s;
-  transition: all 3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
   padding-top: 3rem;
   padding-left: 3rem;
   background-color: white;
