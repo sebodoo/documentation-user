@@ -112,26 +112,27 @@ class BootstrapTranslator(HTML5Translator):
     # def depart_meta(self, node):
     #     pass
 
-    # def visit_section(self, node):
-    #     # close "parent" or preceding section, unless this is the opening of
-    #     # the first section
-    #     if self.section_level:
-    #         self.body.append(u'</section>')
-    #     self.section_level += 1
-    #
-    #     self.body.append(self.starttag(node, 'section'))
-    # def depart_section(self, node):
-    #     self.section_level -= 1
-    #     # close last section of document
-    #     if not self.section_level:
-    #         self.body.append(u'</section>')
+    # Breaks Accounting memento if commented
+    def visit_section(self, node):
+        # close "parent" or preceding section, unless this is the opening of
+        # the first section
+        if self.section_level:
+            self.body.append(u'</section>')
+        self.section_level += 1
 
-    # VFE FIXME do we need to keep this logic ?
-    # Seems that the only change is the use of a nav instead of a div.
-    def visit_topic(self, node):
-        self.body.append(self.starttag(node, 'nav'))
-    def depart_topic(self, node):
-        self.body.append(u'</nav>')
+        self.body.append(self.starttag(node, 'section'))
+    def depart_section(self, node):
+        self.section_level -= 1
+        # close last section of document
+        if not self.section_level:
+            self.body.append(u'</section>')
+
+    # # VFE FIXME do we need to keep this logic ?
+    # # Seems that the only change is the use of a nav instead of a div.
+    # def visit_topic(self, node):
+    #     self.body.append(self.starttag(node, 'nav'))
+    # def depart_topic(self, node):
+    #     self.body.append(u'</nav>')
 
     # overwritten
     # Class mapping:
@@ -148,7 +149,8 @@ class BootstrapTranslator(HTML5Translator):
             class_name = "%s-title" % name
             node.insert(0, nodes.title(name, admonitionlabels[name]))
 
-    # overwritten to append alert-title class to <p> containing admonition title
+    # overwritten
+    # Appends alert-title class to <p> if parent is an Admonition.
     def visit_title(self, node):
         # type: (nodes.Node) -> None
         if isinstance(node.parent, nodes.Admonition):
@@ -174,14 +176,11 @@ class BootstrapTranslator(HTML5Translator):
                    for cls in self.settings.table_style.split(',')]
         classes.insert(0, "docutils")  # compat
         classes.insert(0, "table")  # compat
+
         if 'align' in node:
             classes.append('align-%s' % node['align'])
         tag = self.starttag(node, 'table', CLASS=' '.join(classes))
         self.body.append(tag)
-
-    # docutils -> table
-    # admonition -> alert
-    # admonition-title -> info-title/warning-title/...
 
     # def is_compact_paragraph(self, node):
     #     parent = node.parent
