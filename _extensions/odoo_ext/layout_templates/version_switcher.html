@@ -4,9 +4,10 @@
     </div>
     <div class="col-8">
 	    <select class="form-select">
-	        <option><a href="{{ url }}">12</a></option>
-	        <option><a href="{{ url }}">13</a></option>
-	        <option><a href="{{ url }}">14</a></option>
+			<option>{{ version }}</option> {# Current version #}
+			{% for name, url in versions %}
+				<option><a href="{{ url }}">{{ name }}</a></option>
+			{% endfor %}
 	    </select>
     </div>
 </div>

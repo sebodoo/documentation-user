@@ -2,6 +2,9 @@
 
     $(document).ready(function () {
 
+        // TODO ANV/VFE manipulate toctree to
+        // $('.o_side_nav').
+
         // =======  Define variables =======
         // =================================
         // --  Screen resolutions
