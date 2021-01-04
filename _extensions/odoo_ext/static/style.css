@@ -7484,6 +7484,8 @@ body {
   font-size: 0.875rem; }
   body a {
     text-decoration: none !important; }
+  body dd {
+    margin-left: 1rem; }
 
 header.o_main_header {
   display: flex;
@@ -7496,22 +7498,23 @@ header.o_main_header {
   background-color: #ffffff;
   z-index: 10;
   padding-right: 3rem; }
-  header.o_main_header .o_logo_wrapper {
-    width: 350px;
-    padding-left: 3rem;
-    margin-right: 3rem; }
-    header.o_main_header .o_logo_wrapper > .o_logo {
-      height: 90px;
-      display: flex;
-      align-items: center; }
-      header.o_main_header .o_logo_wrapper > .o_logo img {
-        margin-top: -12px;
-        margin-right: 1rem; }
-      header.o_main_header .o_logo_wrapper > .o_logo span {
-        font-size: 2rem; }
+  @media (min-width: 992px) {
+    header.o_main_header .o_logo_wrapper {
+      width: 350px;
+      padding-left: 3rem;
+      margin-right: 3rem; }
+      header.o_main_header .o_logo_wrapper > .o_logo {
+        height: 90px;
+        display: flex;
+        align-items: center; }
+        header.o_main_header .o_logo_wrapper > .o_logo img {
+          margin-top: -12px;
+          margin-right: 1rem; }
+        header.o_main_header .o_logo_wrapper > .o_logo span {
+          font-size: 2rem; } }
   header.o_main_header .o_search {
     position: relative;
-    width: 100%;
+    width: 90%;
     max-width: 500px; }
     header.o_main_header .o_search .btn {
       position: absolute;
@@ -7535,20 +7538,29 @@ header.o_main_header {
         background-image: url("img/icons/search.svg");
         margin: 0;
         opacity: .3; }
+  header.o_main_header .o_languages {
+    width: 120px; }
 
 .o_side_nav {
-  grid-area: nav;
   width: 350px;
   height: calc(100vh - 90px);
   overflow-y: auto;
   position: fixed;
   top: 90px;
+  left: -100%;
+  -webkit-transition: all 3s ease 0s;
+  -moz-transition: all 3s ease 0s;
+  -o-transition: all 3s ease 0s;
+  transition: all 3s ease 0s;
   padding-top: 3rem;
   padding-left: 3rem;
   background-color: white;
   z-index: 10;
   scrollbar-width: thin;
   scrollbar-color: #603c5e transparent; }
+  @media (min-width: 992px) {
+    .o_side_nav {
+      left: 0; } }
   .o_side_nav > ul {
     padding-left: 30px !important; }
     .o_side_nav > ul > li {
@@ -7587,26 +7599,28 @@ header.o_main_header {
     border-radius: 0; }
 
 #wrap {
-  position: relative;
-  top: 90px;
-  display: grid;
-  grid-template-columns: 350px auto 25%;
-  column-gap: 2rem;
-  grid-template-areas: "nav main sidebar" "footer footer footer"; }
+  position: relative; }
   #wrap main {
-    padding-right: 3rem; }
-    #wrap main:not(.index) {
-      grid-area: main; }
+    position: relative;
+    top: 90px;
+    padding-top: 3rem; }
+    @media (min-width: 992px) {
+      #wrap main {
+        left: 350px;
+        width: calc(100vw - 350px - 25%);
+        padding: 3rem; } }
     #wrap main h1, #wrap main .h1, #wrap main h2, #wrap main .h2 {
       font-size: 24px;
       font-weight: 600; }
     #wrap main h1, #wrap main .h1 {
       color: #603c5e; }
-    #wrap main.index, #wrap main.doc-toc {
-      grid-column: main / sidebar; }
+    @media (min-width: 992px) {
+      #wrap main.index, #wrap main.doc-toc, #wrap main.has_code_col {
+        width: calc(100vw - 350px); } }
     #wrap main.index h2[class*="o_title_"], #wrap main.index .h2[class*="o_title_"] {
       color: #603c5e;
-      font-weight: 700; }
+      font-weight: 700;
+      margin-bottom: 1rem; }
       #wrap main.index h2[class*="o_title_"]:before, #wrap main.index .h2[class*="o_title_"]:before {
         content: '';
         display: inline-block;
@@ -7630,9 +7644,9 @@ header.o_main_header {
       #wrap main.index h2[class*="o_title_"].o_title_advanced:before, #wrap main.index .h2[class*="o_title_"].o_title_advanced:before {
         background-image: url("img/icons/tech-knowledge.svg"); }
     #wrap main.index ul {
-      list-style: none; }
+      padding: 1rem; }
       #wrap main.index ul > li {
-        padding-bottom: 1.5rem; }
+        padding-bottom: 1rem; }
         #wrap main.index ul > li a {
           display: block;
           color: #495057;
@@ -7659,6 +7673,61 @@ header.o_main_header {
       padding-bottom: .5rem;
       border-bottom: 1px solid #d5d5d5;
       margin-bottom: 1rem; }
+    #wrap main.has_code_col article.doc-body > * {
+      max-width: 100%; }
+    #wrap main.has_code_col article.doc-body section {
+      position: relative;
+      display: block;
+      float: left;
+      width: 100%; }
+    @media (min-width: 992px) {
+      #wrap main.has_code_col article.doc-body {
+        width: 100%;
+        padding-right: 0; }
+        #wrap main.has_code_col article.doc-body:before {
+          content: "";
+          background: #282F33;
+          box-shadow: inset 40px 0 40px -18px rgba(22, 24, 29, 0.3);
+          position: absolute;
+          top: 3rem;
+          left: auto;
+          bottom: auto;
+          right: 0;
+          width: 43%;
+          height: calc(100% - 3rem); }
+        #wrap main.has_code_col article.doc-body section > * {
+          width: 54.633333%;
+          max-width: 600px;
+          float: left;
+          clear: left; }
+        #wrap main.has_code_col article.doc-body section > h1, #wrap main.has_code_col article.doc-body section > .h1, #wrap main.has_code_col article.doc-body section > h2, #wrap main.has_code_col article.doc-body section > .h2, #wrap main.has_code_col article.doc-body section > h3, #wrap main.has_code_col article.doc-body section > .h3, #wrap main.has_code_col article.doc-body section > h4, #wrap main.has_code_col article.doc-body section > .h4, #wrap main.has_code_col article.doc-body section > h5, #wrap main.has_code_col article.doc-body section > .h5, #wrap main.has_code_col article.doc-body section > h6, #wrap main.has_code_col article.doc-body section > .h6 {
+          float: none;
+          clear: none; }
+        #wrap main.has_code_col article.doc-body section .doc-aside {
+          width: 43%;
+          float: none;
+          clear: none;
+          margin-left: 57%;
+          padding: 1rem; }
+          #wrap main.has_code_col article.doc-body section .doc-aside p, #wrap main.has_code_col article.doc-body section .doc-aside blockquote, #wrap main.has_code_col article.doc-body section .doc-aside tr, #wrap main.has_code_col article.doc-body section .doc-aside th, #wrap main.has_code_col article.doc-body section .doc-aside li {
+            color: #d5d5d5; }
+          #wrap main.has_code_col article.doc-body section .doc-aside blockquote {
+            color: #d5d5d5;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-weight: 600;
+            font-style: italic; }
+          #wrap main.has_code_col article.doc-body section .doc-aside h1, #wrap main.has_code_col article.doc-body section .doc-aside .h1, #wrap main.has_code_col article.doc-body section .doc-aside h2, #wrap main.has_code_col article.doc-body section .doc-aside .h2, #wrap main.has_code_col article.doc-body section .doc-aside h3, #wrap main.has_code_col article.doc-body section .doc-aside .h3, #wrap main.has_code_col article.doc-body section .doc-aside h4, #wrap main.has_code_col article.doc-body section .doc-aside .h4, #wrap main.has_code_col article.doc-body section .doc-aside h5, #wrap main.has_code_col article.doc-body section .doc-aside .h5, #wrap main.has_code_col article.doc-body section .doc-aside h6, #wrap main.has_code_col article.doc-body section .doc-aside .h6, #wrap main.has_code_col article.doc-body section .doc-aside .h1, #wrap main.has_code_col article.doc-body section .doc-aside .h2, #wrap main.has_code_col article.doc-body section .doc-aside .h3, #wrap main.has_code_col article.doc-body section .doc-aside .h4, #wrap main.has_code_col article.doc-body section .doc-aside .h5, #wrap main.has_code_col article.doc-body section .doc-aside .h6 {
+            color: #fff; }
+          #wrap main.has_code_col article.doc-body section .doc-aside pre {
+            font-size: 12px; }
+          #wrap main.has_code_col article.doc-body section .doc-aside .content-switcher {
+            margin-top: 0; }
+            #wrap main.has_code_col article.doc-body section .doc-aside .content-switcher > ul {
+              margin-bottom: 0; }
+            #wrap main.has_code_col article.doc-body section .doc-aside .content-switcher > ul > li {
+              color: #F9F9F9; } }
+    #wrap main.has_code_col + aside.o_on_page {
+      display: none; }
     #wrap main article {
       position: relative; }
       #wrap main article .o_git_link {
@@ -7718,6 +7787,11 @@ header.o_main_header {
         #wrap main .alert.alert-exercise > .alert-title, #wrap main .alert.alert-exercise > h3, #wrap main .alert.alert-exercise > .h3 {
           color: #938E94; }
         #wrap main .alert.alert-exercise > .alert-title:before, #wrap main .alert.alert-exercise > h3:before, #wrap main .alert.alert-exercise > .h3:before {
+          -webkit-transform: translate(0, 0);
+          -moz-transform: translate(0, 0);
+          -ms-transform: translate(0, 0);
+          -o-transform: translate(0, 0);
+          transform: translate(0, 0);
           top: 28px;
           content: "\e709"; }
       #wrap main .alert.alert-go_to {
@@ -7732,13 +7806,20 @@ header.o_main_header {
         #wrap main .alert.alert-go_to > .alert-title:before, #wrap main .alert.alert-go_to > h3:before, #wrap main .alert.alert-go_to > .h3:before {
           content: "\e70d"; }
   #wrap aside.o_on_page {
-    grid-area: sidebar;
-    padding: 0 3rem;
-    font-size: .9rem; }
-    #wrap aside.o_on_page.affix {
-      z-index: 2;
-      position: fixed;
-      backface-visibility: hidden; }
+    display: none; }
+    @media (min-width: 992px) {
+      #wrap aside.o_on_page {
+        display: block;
+        position: fixed;
+        top: 90px;
+        right: 0;
+        width: 25%;
+        padding: 3rem;
+        font-size: .9rem; }
+        #wrap aside.o_on_page.affix {
+          z-index: 2;
+          position: fixed;
+          backface-visibility: hidden; } }
     #wrap aside.o_on_page h3, #wrap aside.o_on_page .h3 {
       text-transform: uppercase;
       font-weight: 700;
@@ -7759,31 +7840,49 @@ header.o_main_header {
   background: #282F33;
   color: #d5d5d5;
   border-radius: 0.125rem;
-  margin-bottom: 0.725; }
+  padding: 1rem;
+  margin-bottom: 0.725 rem; }
   .highlight pre {
     margin-bottom: 0; }
 
-footer {
-  grid-area: footer; }
+pre {
+  font-size: 0.8em;
+  color: #d5d5d5;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 600;
+  position: relative;
+  border: none;
+  max-width: 100%;
+  overflow: auto;
+  margin: 0;
+  margin-bottom: 0.725 rem; }
+
+@media (min-width: 992px) {
   footer > div {
     padding: 3rem;
-    padding-left: calc(350px + 3rem); }
-  footer .o_get_help {
-    background: #f8f9fa; }
-    footer .o_get_help h5, footer .o_get_help .h5 {
-      color: #603c5e;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 1.5rem; }
-      footer .o_get_help h5::before, footer .o_get_help .h5::before {
-        content: '';
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        vertical-align: middle;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-image: url("img/icons/help.svg");
-        margin: 0 1rem 0 0; }
-  footer .o_footer_nav {
-    display: flex; }
+    padding-left: calc(350px + 3rem); } }
+
+footer .o_get_help {
+  background: #f8f9fa; }
+  footer .o_get_help h5, footer .o_get_help .h5 {
+    color: #603c5e;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 1.5rem; }
+    footer .o_get_help h5::before, footer .o_get_help .h5::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("img/icons/help.svg");
+      margin: 0 1rem 0 0; }
+
+footer .o_footer_nav {
+  display: flex; }
+  footer .o_footer_nav .o_footer_nav_title {
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 0 1rem; }

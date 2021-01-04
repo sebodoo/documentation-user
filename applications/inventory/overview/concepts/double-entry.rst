@@ -98,7 +98,7 @@ For each inventory location, multiple data points can be analysed:
 
  .. raw:: html
 
-   <table class="table table-condensed highlighter-target">
+   <table class="table table-sm highlighter-target">
      <thead>
        <tr>
          <th>Location</th> <th class="text-right">Value</th>

@@ -72,6 +72,7 @@ $fw_extrabold  : 900;
 // As a base font, we use bts4 native font stack:
 // website/static/src/scss/primary_variables.scss
 
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
 
 $o-website-values-palettes: (
     (
@@ -283,9 +284,10 @@ $o-theme-color-palettes: (
 //------------------------------------------------------------------------------
 
 // Header
-$w-header-height:                           90px;
-$w-side-nav-width:                          350px;
-$w-header-white:                            #ffffff;
+$o-header-height:                           90px;
+$o-side-nav-width:                          350px;
+$o-on-page-width:                           25%;
+$o-header-white:                            #ffffff;
 
 // Paths and Prefixes
 $website-img-base-url:                      "../img/";

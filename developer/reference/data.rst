@@ -302,7 +302,7 @@ rendered in a more readable format:
 .. csv-table::
     :file: static/res.country.state.csv
     :header-rows: 1
-    :class: table-striped table-hover table-condensed
+    :class: table-striped table-hover table-sm
 
 For each row (record):
 

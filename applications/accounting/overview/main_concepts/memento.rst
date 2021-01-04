@@ -59,9 +59,9 @@ A difference is made between buying an assets (e.g. a building) and expenses
 value in them being consumed for the company to "work".
 
 
-.. rst-class:: doc-aside
+.. h:div:: doc-aside
 
-.. highlights:: Assets = Liabilities + Equity
+    .. highlights:: Assets = Liabilities + Equity
 
 Chart of Accounts
 =================
@@ -150,7 +150,7 @@ Reconciliation is performed automatically by the system when:
 
    .. rubric:: Customer Statement Example
 
-   .. rst-class:: table-condensed d-c-table
+   .. rst-class:: table-sm d-c-table
 
    +-------------------------+-------------------------+-----------------------+
    |Accounts Receivable      |Debit                    |Credit                 |
@@ -210,7 +210,7 @@ There are two approaches to manage checks and internal wire transfer:
    The first journal entry is created by registering the payment on the
    invoice. The second one is created when registering the bank statement.
 
-   .. rst-class:: table-condensed d-c-table
+   .. rst-class:: table-sm d-c-table
 
    +-------------------------+--------------+------------+---------------+
    |Account                  |Debit         |Credit      |Reconciliation |
@@ -220,7 +220,7 @@ There are two approaches to manage checks and internal wire transfer:
    |Undeposited funds        |100           |            |Check 0123     |
    +-------------------------+--------------+------------+---------------+
 
-   .. rst-class:: table-condensed d-c-table
+   .. rst-class:: table-sm d-c-table
 
    +-------------------------+--------------+------------+---------------+
    |Account                  |Debit         |Credit      |Reconciliation |
@@ -236,7 +236,7 @@ There are two approaches to manage checks and internal wire transfer:
    reconciling the bank statement, the statement line is linked to the
    existing journal entry.
 
-   .. rst-class:: table-condensed d-c-table
+   .. rst-class:: table-sm d-c-table
 
    +-------------------------+--------------+------------+---------------+---------------+
    |Account                  |Debit         |Credit      |Reconciliation |Bank Statement |

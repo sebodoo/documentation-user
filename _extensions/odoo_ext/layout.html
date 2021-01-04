@@ -68,7 +68,7 @@
 {%- endblock -%}
 
 {%- block content -%}
-<div id="wrap" class="pt-5 ">
+<div id="wrap">
     <main class="{{ ' '.join(classes) }} {% if 'has-toc' in meta %}doc-toc{% endif %}">
       {% if pagename == master_doc %}
         {% include "jinja_templates/index_main.html" %}
