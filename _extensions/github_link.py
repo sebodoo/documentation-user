@@ -1,9 +1,3 @@
-import inspect
-import importlib
-import os.path
-import werkzeug
-
-
 """
 * adds github_link(mode) context variable: provides URL (in relevant mode) of
   current document on github
@@ -25,14 +19,19 @@ Notes
 * explicitly imports ``odoo``, so useless for anyone else
 """
 
+import inspect
+import importlib
+import os.path
+import werkzeug
+
+
 def setup(app):
     app.add_config_value('github_user', None, 'env')
     app.add_config_value('github_project', None, 'env')
     app.connect('html-page-context', add_doc_link)
 
     def linkcode_resolve(domain, info):
-        """ Resolves provided object to corresponding github URL
-        """
+        """ Resolves provided object to corresponding github URL """
         # TODO: js?
         if domain != 'py':
             return None
@@ -53,8 +52,10 @@ def setup(app):
             return None
 
         # get original from decorated methods
-        try: obj = getattr(obj, '_orig')
-        except AttributeError: pass
+        try:
+            obj = getattr(obj, '_orig')
+        except AttributeError:
+            pass
 
         try:
             obj_source_path = inspect.getsourcefile(obj)
@@ -69,15 +70,23 @@ def setup(app):
         return make_github_link(
             app,
             os.path.relpath(obj_source_path, project_root),
-            line)
+            line,
+            odoo_repository=True)
     app.config.linkcode_resolve = linkcode_resolve
 
-def make_github_link(app, path, line=None, mode="blob"):
+
+def make_github_link(app, path, line=None, mode="blob", odoo_repository=False):
     config = app.config
 
+    user = config.github_user
+    project = config.github_project
+    if odoo_repository:
+        user = 'odoo'
+        project = 'odoo'
+
     urlpath = "/{user}/{project}/{mode}/{branch}/{path}".format(
-        user=config.github_user,
-        project=config.github_project,
+        user=user,
+        project=project,
         branch=config.version or 'master',
         path=path,
         mode=mode,
@@ -90,8 +99,9 @@ def make_github_link(app, path, line=None, mode="blob"):
         '' if line is None else 'L%d' % line
     ))
 
+
 def add_doc_link(app, pagename, templatename, context, doctree):
-    """ Add github_link function linking to the current page on github """
+    """ Add github_link function linking to the current (.rst) page on github """
     if not app.config.github_user and app.config.github_project:
         return
 

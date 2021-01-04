@@ -39,16 +39,29 @@ needs_sphinx = '1.6.7'
 extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.todo',
+
+    # Odoo sphinx theme
     'odoo_ext',
+
+    # Automatic python doc generation (autodoc, automodule, autoattribute, ...)
     'sphinx.ext.autodoc',
+
+    # Generate automatic links to the documentation of other projects
     'sphinx.ext.intersphinx',
+
+    # github links generation
     'sphinx.ext.linkcode',
-    'embedded_video',
     'github_link',
+
+    # Youtube and Vimeo videos integration (.. youtube & .. vimeo rst commands)
+    'embedded_video',
+
     # 'autojsdoc.ext',
     'html_domain',
     'redirects',
     'exercise_admonition',
+
+    # Display some exercises solutions as patch files.
     'patchqueue',
 ]
 
@@ -374,17 +387,22 @@ def setup(app):
     app.add_javascript('coa-valuation-anglo-saxon.js')
 
     app.connect('html-page-context', canonicalize)
-    app.add_config_value('canonical_root', None, 'env')
+    # VFE TODO remove default before merge
+    app.add_config_value('canonical_root', os.path.dirname(os.path.realpath(__file__)), 'env')
     app.add_config_value('canonical_branch', 'master', 'env')
 
     app.connect('html-page-context', analytics)
     app.add_config_value('google_analytics_key', '', 'env')
 
     app.connect('html-page-context', versionize)
-    app.add_config_value('versions', '', 'env')
+    # VFE TODO before merge, remove the default value put for testing
+    test_versions = ['12.0', '13.0', '14.0']
+    app.add_config_value('versions', ",".join(test_versions), 'env')
 
     app.connect('html-page-context', localize)
-    app.add_config_value('languages', '', 'env')
+    # VFE TODO before merge remove the default value put for testing
+    test_languages = ['fr', 'en', 'es']
+    app.add_config_value('languages', ",".join(test_languages), 'env')
 
     app.connect('doctree-resolved', tag_toctrees)
 
@@ -459,7 +477,7 @@ def canonicalize(app, pagename, templatename, context, doctree):
     if not app.config.canonical_root:
         return
 
-    current_lang = app.config.language or 'en'
+    lang = app.config.language or 'en'
 
     context['canonical'] = _build_url(
         app.config.canonical_root, app.config.canonical_branch, pagename, lang)
@@ -469,7 +487,7 @@ def _build_url(root, branch, pagename, lang='en'):
     return "{canonical_url}{canonical_branch}{lang}/{canonical_page}".format(
         canonical_url=root,
         canonical_branch=branch,
-        lang=current_lang != 'en' and current_lang or '',
+        lang=lang != 'en' and lang or '',
         canonical_page=(pagename + '.html').replace('index.html', '')
                                            .replace('index/', ''),
     )

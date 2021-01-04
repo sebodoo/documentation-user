@@ -4,10 +4,10 @@
     var data = createAtom();
     data.addWatch('chart', function (k, m, prev, next) {
         React.render(
-            React.createElement(Controls, {entry: next}),
+            React.createElement(Controls, { entry: next }),
             document.getElementById('entries-control'));
         React.render(
-            React.createElement(FormatEntry, {entry: next}),
+            React.createElement(FormatEntry, { entry: next }),
             document.querySelector('.journal-entries'));
     });
     document.addEventListener('DOMContentLoaded', function () {
@@ -53,7 +53,7 @@
             return React.DOM.div(
                 null,
                 React.DOM.table(
-                    {className: 'table table-condensed d-c-table'},
+                    { className: 'table table-condensed d-c-table' },
                     React.DOM.thead(
                         null,
                         React.DOM.tr(
@@ -85,12 +85,12 @@
         render_row: function (entry, index) {
             if (!entry) {
                 return React.DOM.tr(
-                    {key: 'spacer-' + index},
-                    React.DOM.td({colSpan: 3}, "\u00A0")
+                    { key: 'spacer-' + index },
+                    React.DOM.td({ colSpan: 3 }, "\u00A0")
                 );
             }
             return React.DOM.tr(
-                {key: index},
+                { key: index },
                 React.DOM.td(null, entry.get('account')),
                 React.DOM.td(null, entry.get('debit')),
                 React.DOM.td(null, entry.get('credit'))
@@ -105,20 +105,20 @@
             var items = this.props.items, epilog = Immutable.List();
             var idx = items.indexOf(null);
             if (idx !== -1) {
-                epilog = items.slice(idx+1);
+                epilog = items.slice(idx + 1);
                 items = items.take(idx);
             }
             return React.DOM.div(
-                {className: 'entries-listing'},
+                { className: 'entries-listing' },
                 React.DOM.h4(null, this.props.heading, ':'),
                 React.DOM.ul(
                     null,
                     items.map(function (item, index) {
-                        return React.DOM.li({key: index}, item);
+                        return React.DOM.li({ key: index }, item);
                     })
                 ),
                 epilog.map(function (item, index) {
-                    return React.DOM.p({key: index}, item);
+                    return React.DOM.p({ key: index }, item);
                 })
             );
         }
@@ -128,8 +128,8 @@
         {
             title: "Company Incorporation",
             operations: [
-                {account: 'Assets: Cash', debit: 1000},
-                {account: 'Equity: Common Stock', credit: 1000}
+                { account: 'Assets: Cash', debit: 1000 },
+                { account: 'Equity: Common Stock', credit: 1000 }
             ],
             explanation: [
                 "The company receives $1,000 in cash",
@@ -142,11 +142,11 @@
         }, {
             title: "Customer Invoice ($100 + 9% tax)",
             operations: [
-                {account: 'Revenue: Goods', credit: 100},
-                {account: 'Liabilities: Deferred Tax Liabilities', credit: 9},
-                {account: 'Assets: Accounts Receivable', debit: 109},
-                {account: 'Assets: Inventory', credit: 50},
-                {account: 'Expenses: Cost of Goods Sold', debit: 50}
+                { account: 'Revenue: Goods', credit: 100 },
+                { account: 'Liabilities: Deferred Tax Liabilities', credit: 9 },
+                { account: 'Assets: Accounts Receivable', debit: 109 },
+                { account: 'Assets: Inventory', credit: 50 },
+                { account: 'Expenses: Cost of Goods Sold', debit: 50 }
             ],
             explanation: [
                 "Revenues increase by $100",
@@ -167,8 +167,8 @@
         }, {
             title: "Customer payment",
             operations: [
-                {account: 'Assets: Cash', debit: 109},
-                {account: 'Assets: Accounts Receivable', credit: 109}
+                { account: 'Assets: Cash', debit: 109 },
+                { account: 'Assets: Accounts Receivable', credit: 109 }
             ],
             explanation: [
                 "The company receives $109 in cash",
@@ -181,10 +181,10 @@
         }, {
             title: "Supplier Bill (Purchase Order $50 but Invoice $52)",
             operations: [
-                {account: 'Assets: Uninvoiced Inventory', debit: 50},
-                {account: 'Assets: Deferred Tax Assets', debit: 4.68},
-                {account: 'Expenses: Price Difference', debit: 2},
-                {account: 'Liabilities: Accounts Payable', credit: 56.68}
+                { account: 'Assets: Uninvoiced Inventory', debit: 50 },
+                { account: 'Assets: Deferred Tax Assets', debit: 4.68 },
+                { account: 'Expenses: Price Difference', debit: 2 },
+                { account: 'Liabilities: Accounts Payable', credit: 56.68 }
             ],
             explanation: [
                 "A temporary account is used to note goods to receive",
@@ -201,8 +201,8 @@
         }, {
             title: "Supplier Goods Received (Purchase Order: $50)",
             operations: [
-                {account: 'Assets: Inventory', debit: 50},
-                {account: 'Assets: Uninvoiced Inventory', credit: 50},
+                { account: 'Assets: Inventory', debit: 50 },
+                { account: 'Assets: Uninvoiced Inventory', credit: 50 },
             ],
             explanation: [
                 "Inventory is increased by $50, the expected amount coming from the purchase order",
@@ -215,8 +215,8 @@
         }, {
             title: "Buy an asset ($300,000 - no tax)",
             operations: [
-                {account: 'Assets: Buildings', debit: 300000},
-                {account: 'Liabilities: Accounts Payable', credit: 300000}
+                { account: 'Assets: Buildings', debit: 300000 },
+                { account: 'Liabilities: Accounts Payable', credit: 300000 }
             ],
             explanation: [
                 "The company gets an asset worth of $300,000",
@@ -229,8 +229,8 @@
         }, {
             title: "Pay supplier invoice",
             operations: [
-                {account: 'Liabilities: Accounts Payable', debit: 300000},
-                {account: 'Assets: Cash', credit: 300000}
+                { account: 'Liabilities: Accounts Payable', debit: 300000 },
+                { account: 'Assets: Cash', credit: 300000 }
             ],
             explanation: [
                 "The company owns $300,000 less to the supplier (liabilities are settled)",
@@ -243,9 +243,9 @@
         }, {
             title: "Cash sale (Sales Receipt)",
             operations: [
-                {account: 'Assets: Cash', debit: 109},
-                {account: 'Revenue: Goods', credit: 100},
-                {account: 'Liabilities: Deferred Tax Liabilities', credit: 9}
+                { account: 'Assets: Cash', debit: 109 },
+                { account: 'Revenue: Goods', credit: 100 },
+                { account: 'Liabilities: Deferred Tax Liabilities', credit: 9 }
             ],
             explanation: [
                 "Company's cash is increased by $109",
@@ -260,9 +260,9 @@
         }, {
             title: "Customer pays invoice, 5% early payment rebate",
             operations: [
-                {account: 'Assets: Cash', debit: 950},
-                {account: 'Revenue: Sales Discount', debit: 50},
-                {account: 'Assets: Accounts Receivable', credit: 1000}
+                { account: 'Assets: Cash', debit: 950 },
+                { account: 'Revenue: Sales Discount', debit: 50 },
+                { account: 'Assets: Accounts Receivable', credit: 1000 }
             ],
             explanation: [
                 "Company's cash is increased by $950",
@@ -277,9 +277,9 @@
         }, {
             title: "Fiscal year closing — positive earnings and 50% dividends",
             operations: [
-                {account: 'Net Profit', debit: 1000},
-                {account: 'Equity: Retained Earnings', credit: 500},
-                {account: 'Liabilities: Dividend Payable', credit: 500}
+                { account: 'Net Profit', debit: 1000 },
+                { account: 'Equity: Retained Earnings', credit: 500 },
+                { account: 'Liabilities: Dividend Payable', credit: 500 }
             ],
             explanation: [
                 "The P&L is cleared (net profit)",

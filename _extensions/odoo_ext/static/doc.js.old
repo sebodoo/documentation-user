@@ -1,3 +1,4 @@
+// VFE TODO remove this file, it has been moved to js/doc.js
 (function ($) {
 
     $(function () {

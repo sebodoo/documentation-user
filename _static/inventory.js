@@ -17,7 +17,7 @@
                 return React.DOM.label(
                     {
                         key: toKey(label),
-                        style: {display: 'block'},
+                        style: { display: 'block' },
                         className: (operations === state.get('active') ? 'highlight-op' : void 0)
                     },
                     React.DOM.input({
@@ -63,30 +63,34 @@
             return React.DOM.div(
                 null,
                 React.DOM.table(
-                    {className: 'table table-condensed'},
+                    { className: 'table table-condensed' },
                     React.DOM.thead(
                         null,
                         React.DOM.tr(
                             null,
                             React.DOM.th(null, "Location"),
-                            React.DOM.th({className: 'text-right'}, "Quantity"),
-                            React.DOM.th({className: 'text-right'}, "Value"))
+                            React.DOM.th({ className: 'text-right' }, "Quantity"),
+                            React.DOM.th({ className: 'text-right' }, "Value"))
                     ),
                     React.DOM.tbody(
                         null,
                         this.locations().map(function (data) {
                             var highlight = false;
                             return React.DOM.tr(
-                                {key: toKey(data.get('label'))},
+                                { key: toKey(data.get('label')) },
                                 React.DOM.th(null, data.get('level') ? '\u2001' : '', data.get('label')),
-                                React.DOM.td({ className: React.addons.classSet({
-                                    'text-right': true,
-                                    'highlight-op': highlight
-                                })}, format_qty(data.get('qty'))),
-                                React.DOM.td({ className: React.addons.classSet({
-                                    'text-right': true,
-                                    'highlight-op': highlight
-                                })}, format_value(data.get('qty') * UNIT_PRICE))
+                                React.DOM.td({
+                                    className: React.addons.classSet({
+                                        'text-right': true,
+                                        'highlight-op': highlight
+                                    })
+                                }, format_qty(data.get('qty'))),
+                                React.DOM.td({
+                                    className: React.addons.classSet({
+                                        'text-right': true,
+                                        'highlight-op': highlight
+                                    })
+                                }, format_value(data.get('qty') * UNIT_PRICE))
                             );
                         })
                     )
@@ -97,7 +101,7 @@
             var data = this.props.p.get('operations');
 
             // {location: total_qty}
-            var totals = data.toIndexedSeq().flatten(true).reduce(function(acc, op) {
+            var totals = data.toIndexedSeq().flatten(true).reduce(function (acc, op) {
                 return acc.update(op.get('location'), function (qty) {
                     return (qty || 0) + op.get('qty');
                 });
@@ -115,10 +119,10 @@
 
     data.addWatch('chart', function (k, m, prev, next) {
         React.render(
-            React.createElement(Controls, {p: next}),
+            React.createElement(Controls, { p: next }),
             document.getElementById('chart-of-locations-controls'));
         React.render(
-            React.createElement(Chart, {p: next}),
+            React.createElement(Chart, { p: next }),
             document.getElementById('chart-of-locations'));
     });
     document.addEventListener('DOMContentLoaded', function () {
@@ -139,24 +143,24 @@
         warehouse: {
             label: "Warehouse",
             locations: {
-                zone1: {label: "Zone 1"},
-                zone2: {label: "Zone 2"}
+                zone1: { label: "Zone 1" },
+                zone2: { label: "Zone 2" }
             }
         },
         partners: {
             label: "Partner Locations",
             locations: {
-                customers: {label: "Customers"},
-                suppliers: {label: "Suppliers"}
+                customers: { label: "Customers" },
+                suppliers: { label: "Suppliers" }
             }
         },
         virtual: {
             label: "Virtual Locations",
             locations: {
-                initial: {label: "Initial Inventory"},
-                loss: {label: "Inventory Loss"},
-                scrap: {label: "Scrapped"},
-                manufacturing: {label: "Manufacturing"}
+                initial: { label: "Initial Inventory" },
+                loss: { label: "Inventory Loss" },
+                scrap: { label: "Scrapped" },
+                manufacturing: { label: "Manufacturing" }
             }
         }
     }, function (k, v) {
@@ -167,44 +171,44 @@
     var operations = Immutable.fromJS([{
         label: "Initial Inventory",
         operations: [
-            {location: locations.getIn(['virtual','locations','initial']), qty: -3},
-            {location: locations.getIn(['warehouse','locations','zone1']), qty: +3}
+            { location: locations.getIn(['virtual', 'locations', 'initial']), qty: -3 },
+            { location: locations.getIn(['warehouse', 'locations', 'zone1']), qty: +3 }
         ]
     }, {
         label: "Reception",
         operations: [
-            {location: locations.getIn(['partners','locations','suppliers']), qty: -2},
-            {location: locations.getIn(['warehouse','locations','zone1']), qty: +2}
+            { location: locations.getIn(['partners', 'locations', 'suppliers']), qty: -2 },
+            { location: locations.getIn(['warehouse', 'locations', 'zone1']), qty: +2 }
         ]
     }, {
         label: "Delivery",
         operations: [
-            {location: locations.getIn(['warehouse','locations','zone1']), qty: -1},
-            {location: locations.getIn(['partners','locations','customers']), qty: +1}
+            { location: locations.getIn(['warehouse', 'locations', 'zone1']), qty: -1 },
+            { location: locations.getIn(['partners', 'locations', 'customers']), qty: +1 }
         ]
     }, {
         label: "Return",
         operations: [
-            {location: locations.getIn(['partners','locations','customers']), qty: -1},
-            {location: locations.getIn(['warehouse','locations','zone1']), qty: +1}
+            { location: locations.getIn(['partners', 'locations', 'customers']), qty: -1 },
+            { location: locations.getIn(['warehouse', 'locations', 'zone1']), qty: +1 }
         ]
     }, {
         label: "1 product broken in Zone 1",
         operations: [
-            {location: locations.getIn(['warehouse','locations','zone1']), qty: -1},
-            {location: locations.getIn(['virtual','locations','scrap']), qty: +1}
+            { location: locations.getIn(['warehouse', 'locations', 'zone1']), qty: -1 },
+            { location: locations.getIn(['virtual', 'locations', 'scrap']), qty: +1 }
         ]
     }, {
         label: "Inventory check of Zone 1",
         operations: [
-            {location: locations.getIn(['warehouse','locations','zone1']), qty: -1},
-            {location: locations.getIn(['virtual','locations','loss']), qty: +1}
+            { location: locations.getIn(['warehouse', 'locations', 'zone1']), qty: -1 },
+            { location: locations.getIn(['virtual', 'locations', 'loss']), qty: +1 }
         ]
     }, {
         label: "Move from Zone 1 to Zone 2",
         operations: [
-            {location: locations.getIn(['warehouse','locations','zone1']), qty: -1},
-            {location: locations.getIn(['warehouse','locations','zone2']), qty: +1}
+            { location: locations.getIn(['warehouse', 'locations', 'zone1']), qty: -1 },
+            { location: locations.getIn(['warehouse', 'locations', 'zone2']), qty: +1 }
         ]
     }]);
 })();

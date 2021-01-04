@@ -1,3 +1,4 @@
+// VFE TODO only load this js on memento.rst page ?
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
         var $rec = $('#reconciliation .reconciliation-example');
@@ -36,12 +37,12 @@
         // account
         $rec.on('animationend webkitAnimationEnd MSAnimationEnd', function (e) {
             switch (e.originalEvent.target) {
-            case $1[0]:
-                $1.addClass('reconciled');
-                break;
-            case $2[0]:
-                $2.addClass('reconciled');
-                break;
+                case $1[0]:
+                    $1.addClass('reconciled');
+                    break;
+                case $2[0]:
+                    $2.addClass('reconciled');
+                    break;
             }
             update_btn();
         });
@@ -52,19 +53,19 @@
                 .text("Next Reconcile")
                 .appendTo($buttons.empty())
             switch (state) {
-            case 0:
-                $reconcile.text("Reconcile");
-                break;
-            case 1:
-                break;
-            case 2:
-                $reconcile.prop('disabled', true);
-                $('<button class="btn btn-primary" type="button">')
-                    .text("Unreconcile")
-                    .appendTo($buttons);
-                break;
-            default:
-                throw new Error("Unknown button state " + state);
+                case 0:
+                    $reconcile.text("Reconcile");
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    $reconcile.prop('disabled', true);
+                    $('<button class="btn btn-primary" type="button">')
+                        .text("Unreconcile")
+                        .appendTo($buttons);
+                    break;
+                default:
+                    throw new Error("Unknown button state " + state);
             }
         }
     });

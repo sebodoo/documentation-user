@@ -18,7 +18,7 @@
                 return React.DOM.label(
                     {
                         key: toKey(label),
-                        style: {display: 'block'},
+                        style: { display: 'block' },
                         className: (operations === state.get('active') ? 'highlight-op' : void 0)
                     },
                     React.DOM.input({
@@ -59,38 +59,42 @@
             return React.DOM.div(
                 null,
                 React.DOM.table(
-                    {className: 'table table-condensed'},
+                    { className: 'table table-condensed' },
                     React.DOM.thead(
                         null,
                         React.DOM.tr(
                             null,
                             React.DOM.th(),
-                            React.DOM.th({className: 'text-right'}, "Debit"),
-                            React.DOM.th({className: 'text-right'}, "Credit"),
-                            React.DOM.th({className: 'text-right'}, "Balance"))
+                            React.DOM.th({ className: 'text-right' }, "Debit"),
+                            React.DOM.th({ className: 'text-right' }, "Credit"),
+                            React.DOM.th({ className: 'text-right' }, "Balance"))
                     ),
                     React.DOM.tbody(
                         null,
                         this.accounts().map(function (data) {
                             var highlight = lastop.get(data.get('code'));
                             return React.DOM.tr(
-                                {key: data.get('code')},
+                                { key: data.get('code') },
                                 React.DOM.th(null,
-                                             data.get('level') ? '\u2001 ' : '',
-                                             data.get('code'), ' ', data.get('label')),
-                                React.DOM.td({className: React.addons.classSet({
-                                    'text-right': true,
-                                    'highlight-op': highlight === 'debit'
-                                })}, format(data.get('debit'))),
-                                React.DOM.td({className: React.addons.classSet({
-                                    'text-right': true,
-                                    'highlight-op': highlight === 'credit'
-                                })}, format(data.get('credit'))),
+                                    data.get('level') ? '\u2001 ' : '',
+                                    data.get('code'), ' ', data.get('label')),
+                                React.DOM.td({
+                                    className: React.addons.classSet({
+                                        'text-right': true,
+                                        'highlight-op': highlight === 'debit'
+                                    })
+                                }, format(data.get('debit'))),
+                                React.DOM.td({
+                                    className: React.addons.classSet({
+                                        'text-right': true,
+                                        'highlight-op': highlight === 'credit'
+                                    })
+                                }, format(data.get('credit'))),
                                 React.DOM.td(
-                                    {className: 'text-right'},
+                                    { className: 'text-right' },
                                     ((data.get('debit') || data.get('credit'))
-                                     ? format(data.get('debit') - data.get('credit'), 0)
-                                     : '')
+                                        ? format(data.get('debit') - data.get('credit'), 0)
+                                        : '')
                                 )
                             );
                         })
@@ -98,7 +102,7 @@
                 )
             );
         },
-        accounts: function() {
+        accounts: function () {
             var data = this.props.p.get('operations');
 
             var totals = data.toIndexedSeq().flatten(true).reduce(function (acc, op) {
@@ -125,10 +129,10 @@
     });
     data.addWatch('chart', function (k, m, prev, next) {
         React.render(
-            React.createElement(Controls, {p: next}),
+            React.createElement(Controls, { p: next }),
             document.getElementById('chart-controls'));
         React.render(
-            React.createElement(Chart, {p: next}),
+            React.createElement(Chart, { p: next }),
             document.querySelector('.valuation-chart-continental'));
     });
 
@@ -148,7 +152,7 @@
         }));
     });
 
-    var NULL = Immutable.Map({debit: 0, credit: 0});
+    var NULL = Immutable.Map({ debit: 0, credit: 0 });
     var ASSETS = {
         code: 1,
         label: "Assets",
@@ -212,44 +216,44 @@
     var operations = Immutable.fromJS([{
         label: "Vendor Invoice (PO €50, Invoice €50)",
         operations: [
-            {account: EXPENSES.PURCHASED_GOODS.code, debit: constant(50)},
-            {account: ASSETS.TAXES_PAID.code, debit: constant(50 * 0.09)},
-            {account: LIABILITIES.ACCOUNTS_PAYABLE.code, credit: constant(50 * 1.09)},
+            { account: EXPENSES.PURCHASED_GOODS.code, debit: constant(50) },
+            { account: ASSETS.TAXES_PAID.code, debit: constant(50 * 0.09) },
+            { account: LIABILITIES.ACCOUNTS_PAYABLE.code, credit: constant(50 * 1.09) },
         ]
     }, {
         label: "Vendor Goods Reception (PO €50, Invoice €50)",
         operations: [
-            {account: EXPENSES.INVENTORY_VARIATIONS.code, credit: constant(50)},
-            {account: ASSETS.STOCK.code, debit: constant(50)},
+            { account: EXPENSES.INVENTORY_VARIATIONS.code, credit: constant(50) },
+            { account: ASSETS.STOCK.code, debit: constant(50) },
         ]
     }, {
         label: "Vendor Invoice (PO €48, Invoice €50)",
         operations: [
-            {account: EXPENSES.PURCHASED_GOODS.code, debit: constant(50)},
-            {account: ASSETS.TAXES_PAID.code, debit: constant(50 * 0.09)},
-            {account: LIABILITIES.ACCOUNTS_PAYABLE.code, credit: constant(50 * 1.09)},
+            { account: EXPENSES.PURCHASED_GOODS.code, debit: constant(50) },
+            { account: ASSETS.TAXES_PAID.code, debit: constant(50 * 0.09) },
+            { account: LIABILITIES.ACCOUNTS_PAYABLE.code, credit: constant(50 * 1.09) },
         ]
     }, {
         label: "Vendor Goods Reception (PO €48, Invoice €50)",
         operations: [
-            {account: EXPENSES.INVENTORY_VARIATIONS.code, credit: constant(48)},
-            {account: ASSETS.STOCK.code, debit: constant(48)},
+            { account: EXPENSES.INVENTORY_VARIATIONS.code, credit: constant(48) },
+            { account: ASSETS.STOCK.code, debit: constant(48) },
         ]
     }, {
         label: "Customer Invoice (€100 + 9% tax)",
         operations: [
-            {account: ASSETS.ACCOUNTS_RECEIVABLE.code, debit: constant(total)},
-            {account: REVENUE.SALES.code, credit: constant(sale)},
-            {account: LIABILITIES.TAXES_PAYABLE.code, credit: constant(tax)}
+            { account: ASSETS.ACCOUNTS_RECEIVABLE.code, debit: constant(total) },
+            { account: REVENUE.SALES.code, credit: constant(sale) },
+            { account: LIABILITIES.TAXES_PAYABLE.code, credit: constant(tax) }
         ]
     }, {
         label: "Customer Shipping",
         operations: [
-            {account: EXPENSES.INVENTORY_VARIATIONS.code, debit: constant(cor)},
-            {account: ASSETS.STOCK.code, credit: constant(cor)}
+            { account: EXPENSES.INVENTORY_VARIATIONS.code, debit: constant(cor) },
+            { account: ASSETS.STOCK.code, credit: constant(cor) }
         ]
     }]);
-    function constant(val) {return function () { return val; };}
+    function constant(val) { return function () { return val; }; }
     var zero = constant(0);
     function format(val, def) {
         if (!val) { return def === undefined ? '' : def; }
