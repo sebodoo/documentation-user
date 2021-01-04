@@ -12,7 +12,7 @@
     var AccountsTable = React.createClass({
         render: function () {
             return React.DOM.div(
-                {style: {marginTop: '1em'}},
+                { style: { marginTop: '1em' } },
                 React.DOM.div(// P&L
                     highlight(this.props.current === 'p-l'),
                     React.DOM.h4(null, "Profit & Loss"),
@@ -75,7 +75,7 @@
                     )
                 ),
                 React.DOM.div(//Balance Sheet
-                    highlight( this.props.current === 'balance'),
+                    highlight(this.props.current === 'balance'),
                     React.DOM.h4(null, "Balance Sheet"),
                     React.DOM.div(
                         null,
@@ -140,7 +140,7 @@
         if (!target) { return; }
         function render(current) {
             React.render(
-                React.createElement(AccountsTable, {current: current}),
+                React.createElement(AccountsTable, { current: current }),
                 target);
         }
 
@@ -166,7 +166,7 @@
                 e.currentTarget.classList.remove('secondary');
                 render(null);
             });
-        })
+        });
 
         render(null);
     });
