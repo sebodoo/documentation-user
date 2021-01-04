@@ -1,5 +1,3 @@
-:banner: banners/sales.jpg
-
 =====
 Sales
 =====
@@ -7,8 +5,7 @@ Sales
 .. toctree::
    :titlesonly:
 
-   sales/send_quotations
-   sales/invoicing
-   sales/products_prices
-   sales/sale_ebay
-   sales/advanced
+   sales/crm
+   sales/sales
+   sales/point_of_sale
+   sales/sales
