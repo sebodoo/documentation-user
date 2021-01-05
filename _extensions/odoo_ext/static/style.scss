@@ -151,10 +151,9 @@ header.o_main_header{
 
 #wrap {
     position: relative;
-
+    top: $o-header-height;
     main{
         position: relative;
-        top: $o-header-height;
         padding-top: 3rem;
         @include media-breakpoint-up(lg) {
             left: $o-side-nav-width;
@@ -204,6 +203,7 @@ header.o_main_header{
             ul {
                 padding: 1rem;
                 > li {
+                    position: relative;
                     padding-bottom: 1rem;
                     a {
                         display: block;
@@ -214,7 +214,7 @@ header.o_main_header{
                     p {
                         color: $gray-500;
                     }
-                    &:hover a, :hover p {
+                    &:hover a, &:hover p {
                         color: $primary;
                     }
                 }
@@ -227,7 +227,9 @@ header.o_main_header{
                     flex-wrap: wrap;
 
                     > li.toctree-l1 {
-                        width: 33.3%;
+                        @include media-breakpoint-up(lg) {
+                            width: 33.3%;
+                        }
                         padding-bottom: 3rem;
                         padding-right: 3rem;
                     }
@@ -345,11 +347,6 @@ header.o_main_header{
                 font-weight: regular;
                 color: $gray-darker;
             }
-
-            p:last-child , ul:last-child {
-                margin-bottom: 2rem;
-            }
-
             .img-fluid {
                 @include box-shadow(0 3px 6px rgba(0, 0, 0, .16));
                 margin-bottom: 2rem;
@@ -462,8 +459,9 @@ pre {
 
 footer{
     > div {
+        padding: 3rem;
         @include media-breakpoint-up(lg) {
-            padding: 3rem;
+
             padding-left: calc(#{$o-side-nav-width} + 3rem)
         }
     }
@@ -486,6 +484,20 @@ footer{
             font-weight: $fw_regular;
             text-transform: uppercase;
             padding: 0 1rem;
+        }
+        .accordion
+            .accordion-body {
+                background: $gray-lightest;
+                border-bottom: 1px solid tint-color($primary, 50%);
+                > li > a{
+                    font-weight: $fw-regular;
+                }
+
+            }
+            .accordion-button::after {
+                background-size: .8rem;
+                width: .8rem;
+                height: .8rem;
         }
     }
 }

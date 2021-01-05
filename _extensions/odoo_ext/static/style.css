@@ -7611,10 +7611,10 @@ header.o_main_header {
     border-radius: 0; }
 
 #wrap {
-  position: relative; }
+  position: relative;
+  top: 90px; }
   #wrap main {
     position: relative;
-    top: 90px;
     padding-top: 3rem; }
     @media (min-width: 992px) {
       #wrap main {
@@ -7658,6 +7658,7 @@ header.o_main_header {
     #wrap main.index ul {
       padding: 1rem; }
       #wrap main.index ul > li {
+        position: relative;
         padding-bottom: 1rem; }
         #wrap main.index ul > li a {
           display: block;
@@ -7666,15 +7667,17 @@ header.o_main_header {
           padding-bottom: .5rem; }
         #wrap main.index ul > li p {
           color: #adb5bd; }
-        #wrap main.index ul > li:hover a, #wrap main.index ul > li :hover p {
+        #wrap main.index ul > li:hover a, #wrap main.index ul > li:hover p {
           color: #00A19B; }
     #wrap main.doc-toc .toctree-wrapper > ul {
       display: flex;
       flex-wrap: wrap; }
       #wrap main.doc-toc .toctree-wrapper > ul > li.toctree-l1 {
-        width: 33.3%;
         padding-bottom: 3rem;
         padding-right: 3rem; }
+        @media (min-width: 992px) {
+          #wrap main.doc-toc .toctree-wrapper > ul > li.toctree-l1 {
+            width: 33.3%; } }
     #wrap main.doc-toc .toctree-wrapper ul {
       list-style: none;
       padding-left: 0; }
@@ -7781,8 +7784,6 @@ header.o_main_header {
         font-size: 20px;
         font-weight: regular;
         color: #282F33; }
-      #wrap main article p:last-child, #wrap main article ul:last-child {
-        margin-bottom: 2rem; }
       #wrap main article .img-fluid {
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
         margin-bottom: 2rem; }
@@ -7869,10 +7870,11 @@ pre {
   margin: 0;
   margin-bottom: 0.725 rem; }
 
-@media (min-width: 992px) {
-  footer > div {
-    padding: 3rem;
-    padding-left: calc(350px + 3rem); } }
+footer > div {
+  padding: 3rem; }
+  @media (min-width: 992px) {
+    footer > div {
+      padding-left: calc(350px + 3rem); } }
 
 footer .o_get_help {
   background: #f8f9fa; }
@@ -7898,3 +7900,12 @@ footer .o_footer_nav {
     font-weight: 400;
     text-transform: uppercase;
     padding: 0 1rem; }
+  footer .o_footer_nav .accordion .accordion-body {
+    background: #F9F9F9;
+    border-bottom: 1px solid #80d0cd; }
+    footer .o_footer_nav .accordion .accordion-body > li > a {
+      font-weight: 400; }
+  footer .o_footer_nav .accordion-button::after {
+    background-size: .8rem;
+    width: .8rem;
+    height: .8rem; }
