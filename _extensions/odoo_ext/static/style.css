@@ -7579,17 +7579,29 @@ header.o_main_header {
     .o_side_nav ul li.current > a {
       font-weight: 700;
       opacity: 1; }
-    .o_side_nav ul > .toctree-l1 > a:before {
-      content: '';
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      vertical-align: middle;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-image: url("img/icons/doc-apps.svg");
-      margin: 0 1rem 0 0;
-      margin-left: -30px; }
+    .o_side_nav ul > .toctree-l1 {
+      /* &.o_menu_applications > a:before{
+                background-image: url("img/icons/doc-apps.svg");
+            } */ }
+      .o_side_nav ul > .toctree-l1 > a:before {
+        content: '';
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("img/icons/doc-apps.svg");
+        margin: 0 1rem 0 0;
+        margin-left: -30px; }
+      .o_side_nav ul > .toctree-l1.o_menu_administration > a:before {
+        background-image: url("img/icons/doc-admin.svg"); }
+      .o_side_nav ul > .toctree-l1.o_menu_developer > a:before {
+        background-image: url("img/icons/doc-dev.svg"); }
+      .o_side_nav ul > .toctree-l1.o_menu_services > a:before {
+        background-image: url("img/icons/doc-services.svg"); }
+      .o_side_nav ul > .toctree-l1.o_menu_contributing > a:before {
+        background-image: url("img/icons/doc-contribute.svg"); }
   .o_side_nav::-webkit-scrollbar {
     width: 5px; }
   .o_side_nav::-webkit-scrollbar-track {
