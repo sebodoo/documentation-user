@@ -369,12 +369,10 @@ LANGUAGES = {
 }
 
 def setup(app):
+    # VFE NOTE: if bump to version > 1.8: html_js_files can be used instead.
     app.add_stylesheet('accounting.css')
     app.add_stylesheet('legal.css')
-    app.add_javascript('prefixfree.min.js')
     app.add_javascript('atom.js')
-    app.add_javascript('immutable.js')
-    app.add_javascript('react.min.js')
     app.add_javascript('accounts.js')
     app.add_javascript('chart-of-accounts.js')
     app.add_javascript('entries.js')
