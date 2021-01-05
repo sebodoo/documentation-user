@@ -10,7 +10,7 @@ from sphinx.writers.html5 import HTML5Translator
 #from urllib.request import url2pathname
 
 # Translators inheritance chain:
-# 1) Sphinx Translator: See root of project/html5.py (Sphinx v1.6.7)
+# 1) Sphinx Translator: See root of project/html5.py (Sphinx v1.6.7)  TODO VFE what root, what html5.py ?
 # 2) Docutils Polyglot html5 translator: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/html5_polyglot/__init__.py
 # 3) Docutils Base HTML translator: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/_html_base.py
 

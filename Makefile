@@ -1,10 +1,11 @@
 # Makefile for Sphinx documentation
-#
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
+CONFIGDIR     = .
+SOURCEDIR     = content
 BUILDDIR      = _build
 SASSOPTS      =
 
@@ -16,10 +17,10 @@ endif
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
-ALLI18NSPHINXOPTS = -d $(BUILDDIR)/doctrees/$(LANG) $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) -D language=$(LANG) .
+ALLSPHINXOPTS   = -c $(CONFIGDIR) -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS)
+ALLI18NSPHINXOPTS = -c $(CONFIGDIR) -d $(BUILDDIR)/doctrees/$(LANG) $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) -D language=$(LANG)
 # the i18n builder cannot share the environment and doctrees with the others
-I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+I18NSPHINXOPTS  = -c $(CONFIGDIR) $(PAPEROPT_$(PAPER)) $(SPHINXOPTS)
 
 sassfiles = _extensions/odoo_ext/static/*.scss
 _extensions/odoo_ext/static/style.css: $(sassfiles)
@@ -61,12 +62,12 @@ clean:
 
 # These commands are used to create files or run tests
 html: _extensions/odoo_ext/static/style.css
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 i18nhtml: _extensions/odoo_ext/static/style.css
-	$(SPHINXBUILD) -b html $(ALLI18NSPHINXOPTS) $(BUILDDIR)/html/$(LANG)
+	$(SPHINXBUILD) -b html $(ALLI18NSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html/$(LANG)
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/$(LANG)."
 
@@ -163,7 +164,7 @@ info:
 	@echo "makeinfo finished. The Info files are in $(BUILDDIR)/texinfo."
 
 gettext:
-	$(SPHINXBUILD) -b gettext $(I18NSPHINXOPTS) locale/sources
+	$(SPHINXBUILD) -b gettext $(I18NSPHINXOPTS) . locale/sources
 	@echo
 	@echo "Build finished. The message catalogs are in locale/sources."
 
