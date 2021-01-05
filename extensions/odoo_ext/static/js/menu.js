@@ -2,18 +2,18 @@
 
     $(document).ready(function () {
 
-        // TODO ANV/VFE move in separate file
-
         // Add a class with the name of the file to each corresponding menu item
         const navigationMenu = document.getElementById('o_main_toctree');
         navigationMenu.querySelectorAll('li').forEach(menuItem => {
-            let href = menuItem.querySelector('a').href
+            let href = menuItem.querySelector('a').href;
             if (href === '#') { // Selected nodes don't have their file name in the href
                 href = window.location.href; // Get it from the current window location
             }
             const fileName = href.substring(href.lastIndexOf('/') + 1, href.lastIndexOf('.html'));
             menuItem.classList.add(`o_menu_${fileName}`);
         });
+
+        // TODO ANV VFE prune old code
 
 //        // =======  Define variables =======
 //        // =================================

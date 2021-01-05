@@ -146,7 +146,6 @@ class BootstrapTranslator(HTML5Translator):
         self.body.append(self.starttag(
             node, 'div', CLASS=" ".join(node_classes)))
         if name:
-            class_name = "%s-title" % name
             node.insert(0, nodes.title(name, admonitionlabels[name]))
 
     # overwritten
