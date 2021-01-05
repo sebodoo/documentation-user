@@ -22,8 +22,8 @@ ALLI18NSPHINXOPTS = -c $(CONFIGDIR) -d $(BUILDDIR)/doctrees/$(LANG) $(PAPEROPT_$
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = -c $(CONFIGDIR) $(PAPEROPT_$(PAPER)) $(SPHINXOPTS)
 
-sassfiles = _extensions/odoo_ext/static/*.scss
-_extensions/odoo_ext/static/style.css: $(sassfiles)
+sassfiles = extensions/odoo_ext/static/*.scss
+extensions/odoo_ext/static/style.css: $(sassfiles)
 	pysassc $(SASSOPTS) $(subst .css,.scss,$@) $@
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
@@ -61,12 +61,12 @@ clean:
 	rm -rf $(BUILDDIR)/*
 
 # These commands are used to create files or run tests
-html: _extensions/odoo_ext/static/style.css
+html: extensions/odoo_ext/static/style.css
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
-i18nhtml: _extensions/odoo_ext/static/style.css
+i18nhtml: extensions/odoo_ext/static/style.css
 	$(SPHINXBUILD) -b html $(ALLI18NSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html/$(LANG)
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/$(LANG)."
