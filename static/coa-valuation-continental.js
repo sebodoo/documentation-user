@@ -29,7 +29,7 @@
                                 data.swap(function (d) {
                                     return d.set('active', operations)
                                         .update('operations', function (ops) {
-                                            return ops.add(operations)
+                                            return ops.add(operations);
                                         });
                                 });
                             } else {
