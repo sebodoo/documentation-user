@@ -14,6 +14,25 @@ from sphinx.writers.html5 import HTML5Translator
 # 2) Docutils Polyglot html5 translator: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/html5_polyglot/__init__.py
 # 3) Docutils Base HTML translator: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/_html_base.py
 
+ADMONITION_MAPPING = {
+    # ???: 'alert-success',
+
+    'note': 'alert-info',
+    'hint': 'alert-info',
+    'tip': 'alert-info',
+    'seealso': 'alert-go_to',
+
+    'warning': 'alert-warning',
+    'attention': 'alert-warning',
+    'caution': 'alert-warning',
+    'important': 'alert-warning',
+
+    'danger': 'alert-danger',
+    'error': 'alert-danger',
+
+    'exercise': 'alert-exercise',
+}
+
 
 class BootstrapTranslator(HTML5Translator):
     head_prefix = 'head_prefix'
@@ -67,8 +86,8 @@ class BootstrapTranslator(HTML5Translator):
             0xa0: u'&nbsp;'
         })
 
-    def add_meta(self, meta):
-        self.meta.append('\n    ' + meta)
+    # def add_meta(self, meta):
+    #     self.meta.append('\n    ' + meta)
 
     # only "space characters" SPACE, CHARACTER TABULATION, LINE FEED,
     # FORM FEED and CARRIAGE RETURN should be collapsed, not al White_Space
@@ -85,14 +104,15 @@ class BootstrapTranslator(HTML5Translator):
     def depart_document(self, node):
         pass
 
-    def visit_meta(self, node):
-        if node.hasattr('lang'):
-            node['xml:lang'] = node['lang']
-        meta = self.starttag(node, 'meta', **node.non_default_attributes())
-        self.add_meta(meta)
-    def depart_meta(self, node):
-        pass
+    # def visit_meta(self, node):
+    #     if node.hasattr('lang'):
+    #         node['xml:lang'] = node['lang']
+    #     meta = self.starttag(node, 'meta', **node.non_default_attributes())
+    #     self.add_meta(meta)
+    # def depart_meta(self, node):
+    #     pass
 
+    # Breaks Accounting memento if commented
     def visit_section(self, node):
         # close "parent" or preceding section, unless this is the opening of
         # the first section
@@ -107,10 +127,60 @@ class BootstrapTranslator(HTML5Translator):
         if not self.section_level:
             self.body.append(u'</section>')
 
-    def visit_topic(self, node):
-        self.body.append(self.starttag(node, 'nav'))
-    def depart_topic(self, node):
-        self.body.append(u'</nav>')
+    # # VFE FIXME do we need to keep this logic ?
+    # # Seems that the only change is the use of a nav instead of a div.
+    # def visit_topic(self, node):
+    #     self.body.append(self.starttag(node, 'nav'))
+    # def depart_topic(self, node):
+    #     self.body.append(u'</nav>')
+
+    # overwritten
+    # Class mapping:
+    # admonition [name] -> alert-[name]
+    # Enforce presence of [name]-title as class on the <p> containing the title
+    def visit_admonition(self, node, name=''):
+        # type: (nodes.Node, unicode) -> None
+        node_classes = ["alert"]
+        if name:
+            node_classes.append(ADMONITION_MAPPING[name])
+        self.body.append(self.starttag(
+            node, 'div', CLASS=" ".join(node_classes)))
+        if name:
+            class_name = "%s-title" % name
+            node.insert(0, nodes.title(name, admonitionlabels[name]))
+
+    # overwritten
+    # Appends alert-title class to <p> if parent is an Admonition.
+    def visit_title(self, node):
+        # type: (nodes.Node) -> None
+        if isinstance(node.parent, nodes.Admonition):
+            self.body.append(self.starttag(node, 'p', CLASS='alert-title'))
+        else:
+            super().visit_title(node)
+
+    def depart_title(self, node):
+        if isinstance(node.parent, nodes.Admonition):
+            self.body.append(u"</p>")
+        else:
+            super().depart_title(node)
+
+    # overwritten
+    # Ensure table class is present for tables
+    def visit_table(self, node):
+        # type: (nodes.Node) -> None
+        self.generate_targets_for_table(node)
+
+        self._table_row_index = 0
+
+        classes = [cls.strip(u' \t\n')
+                   for cls in self.settings.table_style.split(',')]
+        classes.insert(0, "docutils")  # compat
+        classes.insert(0, "table")  # compat
+
+        if 'align' in node:
+            classes.append('align-%s' % node['align'])
+        tag = self.starttag(node, 'table', CLASS=' '.join(classes))
+        self.body.append(tag)
 
     # def is_compact_paragraph(self, node):
     #     parent = node.parent

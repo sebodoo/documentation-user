@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from . import pygments_override
 from . import switcher
 from . import translator
@@ -12,6 +10,8 @@ except ImportError:
 
 import sphinx.builders.html
 from docutils import nodes
+
+
 def setup(app):
     if hasattr(app, 'set_translator'):
         app.set_translator('html', translator.BootstrapTranslator)
@@ -21,16 +21,12 @@ def setup(app):
                      location="odoo extension")
         app.config.html_translator_class = 'odoo_ext.translator.BootstrapTranslator'
 
-    add_js_file = getattr(app, 'add_js_file', None) or app.add_javascript
-    add_js_file('js/doc.js')
-    # for f in ['jquery.min.js', 'bootstrap.js', 'doc.js', 'jquery.noconflict.js']:
-    #     add_js_file(f)
-
     switcher.setup(app)
     app.add_config_value('odoo_cover_default', None, 'env')
     app.add_config_value('odoo_cover_external', {}, 'env')
     app.add_config_value('odoo_cover_default_external', lambda conf: conf.odoo_cover_default, 'env')
     app.connect('html-page-context', update_meta)
+
 
 def update_meta(app, pagename, templatename, context, doctree):
     meta = context.get('meta')
