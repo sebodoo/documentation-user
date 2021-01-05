@@ -1,6 +1,6 @@
 (function ($) {
 
-    $(document).ready(function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
         // TODO ANV/VFE move in separate file
 
@@ -16,4 +16,4 @@
         }
 
     });
-})(jQuery);
+})();

@@ -1,6 +1,6 @@
 (function ($) {
 
-    $(document).ready(function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
         // enforce the presence of the class img-fluid on all images in the body.
         // Was done in the translator previously, but easier to code and maintain in js.
@@ -9,4 +9,4 @@
         });
 
     });
-})(jQuery);
+})();

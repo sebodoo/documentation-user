@@ -1,6 +1,6 @@
 (function ($) {
 
-    $(document).ready(function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
         // Add a class with the name of the file to each corresponding menu item
         const navigationMenu = document.getElementById('o_main_toctree');
@@ -353,4 +353,4 @@
 //            }
 //        });
     });
-})(jQuery);
+})();
