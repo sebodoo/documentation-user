@@ -179,6 +179,19 @@ html_theme_path = ['extensions']
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['static']
 html_add_permalinks = ''
+html_js_files = [
+    'js/atom.js',
+    'js/accounts.js',
+    'js/chart-of-accounts.js',
+    'js/entries.js',
+    'js/reconciliation.js',
+    'js/misc.js',
+
+    'js/inventory.js',
+    'js/coa-valuation.js',
+    'js/coa-valuation-continental.js',
+    'js/coa-valuation-anglo-saxon.js',
+]
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -373,18 +386,6 @@ def setup(app):
     # conf attributes can be used instead.
     # app.add_stylesheet('css/accounting.css')
     # app.add_stylesheet('css/legal.css')
-
-    app.add_javascript('js/atom.js')
-    app.add_javascript('js/accounts.js')
-    app.add_javascript('js/chart-of-accounts.js')
-    app.add_javascript('js/entries.js')
-    app.add_javascript('js/reconciliation.js')
-    app.add_javascript('js/misc.js')
-
-    app.add_javascript('js/inventory.js')
-    app.add_javascript('js/coa-valuation.js')
-    app.add_javascript('js/coa-valuation-continental.js')
-    app.add_javascript('js/coa-valuation-anglo-saxon.js')
 
     app.connect('html-page-context', canonicalize)
     # VFE TODO remove default before merge
