@@ -353,34 +353,98 @@ header.o_main_header{
             }
 
         }
+        // alert-info
+        // alert-warning
+        // alert-danger
+        // alert-go_to
+        // alert-exercise
+        // alert-success
+
+
         .alert {
             position: relative;
             max-width: 95%;
             display: inline-block;
             border-radius: 0;
             border-width: 0 0 0 3px;
-            &.alert-exercise {
-                border-color: tint-color($doc_exercise, 30%);
-                background-color: tint-color($doc_exercise, 40%);
-                color: shade-color($doc_exercise, 35%);
-
+            > h3, > .alert-title {
+                font-size: 1.642857143em;
+                line-height: 1em;
+                margin: 0 0 10px 0;
+                font-size: 1rem;
+                font-weight: $fw_bold;
+                &:before {
+                    content:"";
+                    font-size: 1.2em;
+                    @include media-breakpoint-down(md) {
+                        display:none;
+                    }
+                }
+            }
+            &.alert-success {
+                border-color: lighten($brand-success, 30%);
+                background-color: lighten($brand-success, 45%);
+                color: darken($brand-success, 35%);
                 > .alert-title, > h3 {
-                  color: $doc_exercise;
+                    color: $brand-success
                 }
                 > .alert-title:before, > h3:before {
-                @include transform(translate(0 , 0));
+                    content: "\e625";
+                }
+            }
+            &.alert-info, &.tip {
+                border-color: tint-color($brand-info, 30%);
+                background-color: tint-color($brand-info, 85%);
+                color: shade-color($brand-info, 35%);
+                > .alert-title, > h3 {
+                    color: $brand-info
+                }
+                > .alert-title:before, > h3:before {
+                    content: "\e639";
+                }
+            }
+            &.alert-warning, &.warning {
+                border-color: lighten($brand-warning, 30%);
+                background-color: lighten($brand-warning, 35%);
+                color: darken($brand-warning, 35%);
+                > .alert-title, > h3 {
+                    color: $warning;
+                }
+                > .alert-title:before, > h3:before {
+                    content: "\e6a4";
+                }
+            }
+            &.alert-danger {
+                border-color: lighten($brand-danger, 30%);
+                background-color: lighten($brand-danger, 40%);
+                color: darken($brand-danger, 35%);
+                > .alert-title, > h3 {
+                    color: $brand-danger
+                }
+                > .alert-title:before, > h3:before {
+                    content: "\e6a4";
+                }
+            }
+            &.alert-exercise {
+                border-color: tint-color($doc_exercise, 30%);
+                background-color: tint-color($doc_exercise, 80%);
+                color: shade-color($doc_exercise, 35%);
+                > .alert-title, > h3 {
+                    color: shade-color($doc_exercise, 35%);
+                }
+                > .alert-title:before, > h3:before {
+                    @include transform(translate(0 , 0));
                     top: 28px;
                     content: "\e709";
                 }
             }
-
             &.alert-go_to {
                 border-color: tint-color($secondary, 60%);
                 background-color: tint-color($secondary, 80%);
                 border-width: 2px;
                 margin: 2em auto;
-                a{
-                    color: $secondary;
+                a {
+                    color: darken($brand-info, 25%);
                 }
                 > .alert-title, > h3 {
                     color: $brand-info
@@ -485,7 +549,10 @@ footer{
             text-transform: uppercase;
             padding: 0 1rem;
         }
-        .accordion
+        .accordion {
+            .accordion-collapse{
+                border: none;
+            }
             .accordion-body {
                 background: $gray-lightest;
                 border-bottom: 1px solid tint-color($primary, 50%);
@@ -498,6 +565,7 @@ footer{
                 background-size: .8rem;
                 width: .8rem;
                 height: .8rem;
+            }
         }
     }
 }

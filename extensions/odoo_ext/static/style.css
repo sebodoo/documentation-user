@@ -7793,12 +7793,56 @@ header.o_main_header {
       display: inline-block;
       border-radius: 0;
       border-width: 0 0 0 3px; }
+      #wrap main .alert > h3, #wrap main .alert > .h3, #wrap main .alert > .alert-title {
+        font-size: 1.642857143em;
+        line-height: 1em;
+        margin: 0 0 10px 0;
+        font-size: 1rem;
+        font-weight: 700; }
+        #wrap main .alert > h3:before, #wrap main .alert > .h3:before, #wrap main .alert > .alert-title:before {
+          content: "";
+          font-size: 1.2em; }
+          @media (max-width: 767.98px) {
+            #wrap main .alert > h3:before, #wrap main .alert > .h3:before, #wrap main .alert > .alert-title:before {
+              display: none; } }
+      #wrap main .alert.alert-success {
+        border-color: #b9dfb9;
+        background-color: #eef7ee;
+        color: #183518; }
+        #wrap main .alert.alert-success > .alert-title, #wrap main .alert.alert-success > h3, #wrap main .alert.alert-success > .h3 {
+          color: #50AF51; }
+        #wrap main .alert.alert-success > .alert-title:before, #wrap main .alert.alert-success > h3:before, #wrap main .alert.alert-success > .h3:before {
+          content: "\e625"; }
+      #wrap main .alert.alert-info, #wrap main .alert.tip {
+        border-color: #81bbcc;
+        background-color: #e4f0f4;
+        color: #316776; }
+        #wrap main .alert.alert-info > .alert-title, #wrap main .alert.alert-info > h3, #wrap main .alert.alert-info > .h3, #wrap main .alert.tip > .alert-title, #wrap main .alert.tip > h3, #wrap main .alert.tip > .h3 {
+          color: #4B9EB6; }
+        #wrap main .alert.alert-info > .alert-title:before, #wrap main .alert.alert-info > h3:before, #wrap main .alert.alert-info > .h3:before, #wrap main .alert.tip > .alert-title:before, #wrap main .alert.tip > h3:before, #wrap main .alert.tip > .h3:before {
+          content: "\e639"; }
+      #wrap main .alert.alert-warning, #wrap main .alert.warning {
+        border-color: #fceedb;
+        background-color: #fef9f3;
+        color: #81500b; }
+        #wrap main .alert.alert-warning > .alert-title, #wrap main .alert.alert-warning > h3, #wrap main .alert.alert-warning > .h3, #wrap main .alert.warning > .alert-title, #wrap main .alert.warning > h3, #wrap main .alert.warning > .h3 {
+          color: #ffc107; }
+        #wrap main .alert.alert-warning > .alert-title:before, #wrap main .alert.alert-warning > h3:before, #wrap main .alert.alert-warning > .h3:before, #wrap main .alert.warning > .alert-title:before, #wrap main .alert.warning > h3:before, #wrap main .alert.warning > .h3:before {
+          content: "\e6a4"; }
+      #wrap main .alert.alert-danger {
+        border-color: #f4cecd;
+        background-color: #fdf7f7;
+        color: #611715; }
+        #wrap main .alert.alert-danger > .alert-title, #wrap main .alert.alert-danger > h3, #wrap main .alert.alert-danger > .h3 {
+          color: #D9534F; }
+        #wrap main .alert.alert-danger > .alert-title:before, #wrap main .alert.alert-danger > h3:before, #wrap main .alert.alert-danger > .h3:before {
+          content: "\e6a4"; }
       #wrap main .alert.alert-exercise {
         border-color: #b3b0b4;
-        background-color: #bebbbf;
+        background-color: #e9e8ea;
         color: #605c60; }
         #wrap main .alert.alert-exercise > .alert-title, #wrap main .alert.alert-exercise > h3, #wrap main .alert.alert-exercise > .h3 {
-          color: #938E94; }
+          color: #605c60; }
         #wrap main .alert.alert-exercise > .alert-title:before, #wrap main .alert.alert-exercise > h3:before, #wrap main .alert.alert-exercise > .h3:before {
           -webkit-transform: translate(0, 0);
           -moz-transform: translate(0, 0);
@@ -7813,7 +7857,7 @@ header.o_main_header {
         border-width: 2px;
         margin: 2em auto; }
         #wrap main .alert.alert-go_to a {
-          color: #603c5e; }
+          color: #25505c; }
         #wrap main .alert.alert-go_to > .alert-title, #wrap main .alert.alert-go_to > h3, #wrap main .alert.alert-go_to > .h3 {
           color: #4B9EB6; }
         #wrap main .alert.alert-go_to > .alert-title:before, #wrap main .alert.alert-go_to > h3:before, #wrap main .alert.alert-go_to > .h3:before {
