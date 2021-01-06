@@ -37,32 +37,32 @@ needs_sphinx = '2.0.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    # Basic Sphinx extensions
     'sphinx.ext.ifconfig',
-    'sphinx.ext.todo',
+    'sphinx.ext.todo',  # Support the specialized directive
+    'sphinx.ext.intersphinx',  # Link sources in other projects (used to build the reference doc)
+    'sphinx.ext.autodoc',  # Parse Python docstrings (autodoc, automodule, autoattribute directives)
 
-    # Odoo sphinx theme
-    'odoo_ext',
-
-    # Automatic python doc generation (autodoc, automodule, autoattribute, ...)
-    'sphinx.ext.autodoc',
-
-    # Generate automatic links to the documentation of other projects
-    'sphinx.ext.intersphinx',
-
-    # github links generation
+    # GitHub links generation
     'sphinx.ext.linkcode',
     'github_link',
 
-    # Youtube and Vimeo videos integration (.. youtube & .. vimeo rst commands)
+    # Custom Odoo theme
+    'odoo_ext',
+
+    # Youtube and Vimeo videos integration (youtube, vimeo directives)
     'embedded_video',
 
     # 'autojsdoc.ext',
     'html_domain',
-    'redirects',
+
     'exercise_admonition',
 
-    # Display some exercises solutions as patch files.
+    # Build code from git patches
     'patchqueue',
+
+    # Redirection generator
+    'redirects',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
