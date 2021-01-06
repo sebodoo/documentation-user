@@ -371,8 +371,8 @@ LANGUAGES = {
 def setup(app):
     # VFE NOTE: if bump to version > 1.8: html_js_files & html_css_files
     # conf attributes can be used instead.
-    app.add_stylesheet('css/accounting.css')
-    app.add_stylesheet('css/legal.css')
+    # app.add_stylesheet('css/accounting.css')
+    # app.add_stylesheet('css/legal.css')
 
     app.add_javascript('js/atom.js')
     app.add_javascript('js/accounts.js')

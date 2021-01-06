@@ -1,4 +1,5 @@
 :code-column:
+:custom-css: accounting.css
 
 ==============================================
 Accounting Memento For Entrepreneurs (US GAAP)
