@@ -14,7 +14,7 @@ lexers['php'] = PhpLexer(startinline=True)
 DIR = os.path.dirname(__file__)
 sys.path.insert(
     0, os.path.abspath(
-        os.path.join(DIR, '_extensions')
+        os.path.join(DIR, 'extensions')
     )
 )
 
@@ -156,7 +156,7 @@ html_theme_options = {
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ['_extensions']
+html_theme_path = ['extensions']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -177,7 +177,7 @@ html_theme_path = ['_extensions']
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['static']
 html_add_permalinks = ''
 
 # Add any extra paths that contain custom files (such as robots.txt or
@@ -248,7 +248,7 @@ latex_elements = {
     'releasename': '14.0',
 }
 
-latex_additional_files = ['_static/latex/odoo.sty']
+latex_additional_files = ['static/latex/odoo.sty']
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
@@ -286,7 +286,7 @@ latex_documents = [
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-latex_logo = '_static/banners/odoo_logo.png'
+latex_logo = 'static/banners/odoo_logo.png'
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
@@ -369,12 +369,11 @@ LANGUAGES = {
 }
 
 def setup(app):
+    # VFE NOTE: if bump to version > 1.8: html_js_files & html_css_files
+    # conf attributes can be used instead.
     app.add_stylesheet('accounting.css')
     app.add_stylesheet('legal.css')
-    app.add_javascript('prefixfree.min.js')
     app.add_javascript('atom.js')
-    app.add_javascript('immutable.js')
-    app.add_javascript('react.min.js')
     app.add_javascript('accounts.js')
     app.add_javascript('chart-of-accounts.js')
     app.add_javascript('entries.js')

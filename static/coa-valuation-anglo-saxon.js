@@ -29,7 +29,7 @@
                                 data.swap(function (d) {
                                     return d.set('active', operations)
                                         .update('operations', function (ops) {
-                                            return ops.add(operations)
+                                            return ops.add(operations);
                                         });
                                 });
                             } else {
@@ -37,7 +37,7 @@
                                     return d.set('active', null) // keep visible in state map
                                         .update('operations', function (ops) {
                                             return ops.remove(operations);
-                                        })
+                                        });
                                 });
                             }
                         }
