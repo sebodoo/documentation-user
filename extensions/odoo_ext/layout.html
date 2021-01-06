@@ -1,21 +1,13 @@
 {% extends "basic/layout.html" %}
 {% set html5_doctype = True %}
 
-{# In sphinx 1.6.7, css block is named 'csss', but in most recent version, it's 'css' #}
-{% macro custom_css() %}
+{% block css %}
+    {{ super() }}
     {# Allow custom css style import for specific pages #}
     {% if 'custom-css' in meta %}
         {% set link = '_static/css/' + meta['custom-css'] %}
         <link rel="stylesheet" href="{{ pathto(link, 1) }}" type="text/css"/>
     {% endif %}
-{% endmacro %}
-{% block csss %}
-    {{ super() }}
-    {{ custom_css() }}
-{% endblock %}
-{% block css %}
-    {{ super() }}
-    {{ custom_css() }}
 {% endblock %}
 
 {% block scripts %}
@@ -96,6 +88,7 @@
 {%- endblock -%}
 
 {%- block content -%}
+    <div class="content" role="main">
     <div id="wrap">
         <main class="{{ ' '.join(classes) }} {% if 'has-toc' in meta %}doc-toc{% endif %}">
             {% if pagename == master_doc %}
@@ -103,8 +96,11 @@
                 {% include "layout_templates/homepage.html" %}
             {% else %}
                 <div id="o_content" class="o_content row">
-                    <article class="doc-body mb-5 {% if pagename in toc%}index-category{% endif %}">
-                        {% block body %} {% endblock %}
+                    <article class="doc-body mb-5">
+                        <!-- Beacon used by the Sphinx search to know where to look for a string -->
+                        <div role="main">
+                            {% block body %} {% endblock %}
+                        </div>
                         {% if github_link and not 'has-toc' in meta %}
                             <a href="{{ github_link(mode='edit') }}" class="o_git_link">Edit on GitHub</a>
                         {% endif %}
