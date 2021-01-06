@@ -371,19 +371,20 @@ LANGUAGES = {
 def setup(app):
     # VFE NOTE: if bump to version > 1.8: html_js_files & html_css_files
     # conf attributes can be used instead.
-    app.add_stylesheet('accounting.css')
-    app.add_stylesheet('legal.css')
-    app.add_javascript('atom.js')
-    app.add_javascript('accounts.js')
-    app.add_javascript('chart-of-accounts.js')
-    app.add_javascript('entries.js')
-    app.add_javascript('reconciliation.js')
-    app.add_javascript('misc.js')
+    app.add_stylesheet('css/accounting.css')
+    app.add_stylesheet('css/legal.css')
 
-    app.add_javascript('inventory.js')
-    app.add_javascript('coa-valuation.js')
-    app.add_javascript('coa-valuation-continental.js')
-    app.add_javascript('coa-valuation-anglo-saxon.js')
+    app.add_javascript('js/atom.js')
+    app.add_javascript('js/accounts.js')
+    app.add_javascript('js/chart-of-accounts.js')
+    app.add_javascript('js/entries.js')
+    app.add_javascript('js/reconciliation.js')
+    app.add_javascript('js/misc.js')
+
+    app.add_javascript('js/inventory.js')
+    app.add_javascript('js/coa-valuation.js')
+    app.add_javascript('js/coa-valuation-continental.js')
+    app.add_javascript('js/coa-valuation-anglo-saxon.js')
 
     app.connect('html-page-context', canonicalize)
     # VFE TODO remove default before merge

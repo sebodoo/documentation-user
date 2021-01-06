@@ -1,3 +1,5 @@
+/* global Immutable, React */
+/* global createAtom */
 (function () {
     'use strict';
 
