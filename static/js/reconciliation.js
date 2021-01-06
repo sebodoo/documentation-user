@@ -1,4 +1,3 @@
-// VFE TODO only load this js on memento.rst page ?
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
         var $rec = $('#reconciliation .reconciliation-example');

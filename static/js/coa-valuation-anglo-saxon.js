@@ -1,3 +1,5 @@
+/* global Immutable, React */
+/* global createAtom */
 (function () {
     'use strict';
 
@@ -37,7 +39,7 @@
                                     return d.set('active', null) // keep visible in state map
                                         .update('operations', function (ops) {
                                             return ops.remove(operations);
-                                        })
+                                        });
                                 });
                             }
                         }
@@ -133,11 +135,11 @@
             document.getElementById('chart-controls'));
         React.render(
             React.createElement(Chart, { p: next }),
-            document.querySelector('.valuation-chart'));
+            document.querySelector('.valuation-chart-anglo-saxon'));
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-        var chart = document.querySelector('.valuation-chart');
+        var chart = document.querySelector('.valuation-chart-anglo-saxon');
         if (!chart) { return; }
 
         var controls = document.createElement('div');
@@ -215,14 +217,14 @@
         purchase = 52,
         purchase_tax = 52 * 0.09;
     var operations = Immutable.fromJS([{
-        label: "Vendor Bill (PO $50, Invoice $40)",
+        label: "Vendor Bill (PO $50, Invoice $50)",
         operations: [
             { account: LIABILITIES.STOCK_IN.code, debit: constant(50) },
             { account: ASSETS.TAXES_PAID.code, debit: constant(50 * 0.09) },
             { account: LIABILITIES.ACCOUNTS_PAYABLE.code, credit: constant(50 * 1.09) },
         ]
     }, {
-        label: "Vendor Goods Reception (PO $50, Invoice $50)",
+        label: "Supplier Goods Reception (PO $50, Invoice $50)",
         operations: [
             { account: LIABILITIES.STOCK_IN.code, credit: constant(50) },
             { account: ASSETS.STOCK.code, debit: constant(50) },
@@ -236,7 +238,7 @@
             { account: LIABILITIES.ACCOUNTS_PAYABLE.code, credit: constant(50 * 1.09) },
         ]
     }, {
-        label: "Vendor Goods Reception (PO $48, Invoice $50)",
+        label: "Supplier Goods Reception (PO $48, Invoice $50)",
         operations: [
             { account: LIABILITIES.STOCK_IN.code, credit: constant(48) },
             { account: ASSETS.STOCK.code, debit: constant(48) },

@@ -1,6 +1,23 @@
 {% extends "basic/layout.html" %}
 {% set html5_doctype = True %}
 
+{# In sphinx 1.6.7, css block is named 'csss', but in most recent version, it's 'css' #}
+{% macro custom_css() %}
+    {# Allow custom css style import for specific pages #}
+    {% if 'custom-css' in meta %}
+        {% set link = '_static/css/' + meta['custom-css'] %}
+        <link rel="stylesheet" href="{{ pathto(link, 1) }}" type="text/css"/>
+    {% endif %}
+{% endmacro %}
+{% block csss %}
+    {{ super() }}
+    {{ custom_css() }}
+{% endblock %}
+{% block css %}
+    {{ super() }}
+    {{ custom_css() }}
+{% endblock %}
+
 {% block scripts %}
     {# Before the super call to be loaded before custom files using React & Immutable #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.2/immutable.min.js"
