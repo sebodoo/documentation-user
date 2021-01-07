@@ -16,7 +16,7 @@
                 if (!e.currentTarget.contains(e.target)) { return; }
 
                 var $li = $(e.currentTarget);
-                console.log($li, $li.data('highlight'), $target.find($li.data('highlight')));
+                // console.log($li, $li.data('highlight'), $target.find($li.data('highlight')));
                 $li.addClass('secondary');
                 $target.find($li.data('highlight')).addClass('related');
             });

@@ -1,3 +1,4 @@
+/* global Immutable, React */
 (function () {
     'use strict';
 

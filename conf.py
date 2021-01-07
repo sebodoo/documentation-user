@@ -27,7 +27,7 @@ if os.path.exists('../odoo/odoo-bin'):
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '1.6.7'
+needs_sphinx = '2.0.0'
 
 # Warn all references where target cannot be found
 # but doesn't seem to like Odoo architecture
@@ -37,32 +37,34 @@ needs_sphinx = '1.6.7'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    # Basic Sphinx extensions
     'sphinx.ext.ifconfig',
-    'sphinx.ext.todo',
+    'sphinx.ext.todo',  # Support the specialized directive
+    'sphinx.ext.intersphinx',  # Link sources in other projects (used to build the reference doc)
+    'sphinx.ext.autodoc',  # Parse Python docstrings (autodoc, automodule, autoattribute directives)
 
-    # Odoo sphinx theme
-    'odoo_ext',
-
-    # Automatic python doc generation (autodoc, automodule, autoattribute, ...)
-    'sphinx.ext.autodoc',
-
-    # Generate automatic links to the documentation of other projects
-    'sphinx.ext.intersphinx',
-
-    # github links generation
+    # GitHub links generation
     'sphinx.ext.linkcode',
     'github_link',
 
-    # Youtube and Vimeo videos integration (.. youtube & .. vimeo rst commands)
+    # Custom Odoo theme
+    # Suffixed with _ext because it is a Python package and we don't want it to collide with the
+    # actual odoo package.
+    'odoo_ext',
+
+    # Youtube and Vimeo videos integration (youtube, vimeo directives)
     'embedded_video',
 
     # 'autojsdoc.ext',
     'html_domain',
-    'redirects',
+
     'exercise_admonition',
 
-    # Display some exercises solutions as patch files.
+    # Build code from git patches
     'patchqueue',
+
+    # Redirection generator
+    'redirects',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -179,6 +181,19 @@ html_theme_path = ['extensions']
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['static']
 html_add_permalinks = ''
+html_js_files = [
+    'js/atom.js',
+    'js/accounts.js',
+    'js/chart-of-accounts.js',
+    'js/entries.js',
+    'js/reconciliation.js',
+    'js/misc.js',
+
+    'js/inventory.js',
+    'js/coa-valuation.js',
+    'js/coa-valuation-continental.js',
+    'js/coa-valuation-anglo-saxon.js',
+]
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -371,19 +386,8 @@ LANGUAGES = {
 def setup(app):
     # VFE NOTE: if bump to version > 1.8: html_js_files & html_css_files
     # conf attributes can be used instead.
-    app.add_stylesheet('accounting.css')
-    app.add_stylesheet('legal.css')
-    app.add_javascript('atom.js')
-    app.add_javascript('accounts.js')
-    app.add_javascript('chart-of-accounts.js')
-    app.add_javascript('entries.js')
-    app.add_javascript('reconciliation.js')
-    app.add_javascript('misc.js')
-
-    app.add_javascript('inventory.js')
-    app.add_javascript('coa-valuation.js')
-    app.add_javascript('coa-valuation-continental.js')
-    app.add_javascript('coa-valuation-anglo-saxon.js')
+    # app.add_stylesheet('css/accounting.css')
+    # app.add_stylesheet('css/legal.css')
 
     app.connect('html-page-context', canonicalize)
     # VFE TODO remove default before merge
