@@ -47,7 +47,6 @@
      * Add the class `o_page_toc_title` on the first heading reference.
      *
      * @param {NodeList} headingRefs - The references to the headings of the page
-     * @return {undefined}
      */
     const _flagFirstHeadingRef = (headingRefs) => {
         headingRefs[0].classList.add('o_page_toc_title');
@@ -56,8 +55,7 @@
     /**
      * Entirely hide the local tree of contents.
      *
-     * @param {object} pageTOC - The tree of contents of the page
-     * @return {undefined}
+     * @param {HTMLElement} pageTOC - The tree of contents of the page
      */
     const _hidePageTOC = (pageTOC) => {
         pageTOC.style.visibility = 'hidden';
