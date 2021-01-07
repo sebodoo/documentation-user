@@ -22,6 +22,8 @@
                 sectionHeader.classList.add("o_has_permalink_marker");
                 sectionHeader.append(permalinkMarker);
 
+                // VFE TODO or only specify the href on the i element ?
+                // do we need this onclick logic ?
                 permalinkMarker.onclick = event => {
                     section.scrollIntoView();
                     window.location.hash = id;
