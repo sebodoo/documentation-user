@@ -2,9 +2,6 @@
 .*
 *.mo
 
-# sphinx build directories
+# Sphinx build files
 _build/
-# venv
-bin/
-include/
-lib/
+extensions/odoo_ext/static/style.css

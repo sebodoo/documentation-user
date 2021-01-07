@@ -30,3 +30,4 @@ extensions/odoo_ext/static/style.css: extensions/odoo_ext/static/*.scss
 
 clean:
 	$(RM_CMD) $(BUILD_DIR)/*
+	$(RM_CMD) extensions/odoo_ext/static/style.css

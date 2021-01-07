@@ -48,6 +48,8 @@ extensions = [
     'github_link',
 
     # Custom Odoo theme
+    # Suffixed with _ext because it is a Python package and we don't want it to collide with the
+    # actual odoo package.
     'odoo_ext',
 
     # Youtube and Vimeo videos integration (youtube, vimeo directives)
