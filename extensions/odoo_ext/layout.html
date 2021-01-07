@@ -33,23 +33,10 @@
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ pathto('_static/js/jquery.noconflict.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/js/menu.js', 1) }}"></script>
     <script type="text/javascript" src="{{ pathto('_static/js/layout.js', 1) }}"></script>
+    <script type="text/javascript" src="{{ pathto('_static/js/menu.js', 1) }}"></script>
     <script type="text/javascript" src="{{ pathto('_static/js/page_toc.js', 1) }}"></script>
 {% endblock %}
-
-{% set classes = [] %}
-{% if pagename == master_doc %}
-    {% set classes = classes + ['index'] %}
-{% endif %}
-
-{% if 'code-column' in meta %}
-    {% set classes = classes + ['has_code_col'] %}
-{% endif %}
-
-{% if 'classes' in meta %}
-    {% set classes = classes + meta['classes'].split() %}
-{% endif %}
 
 {%- block linktags -%}
     {% for code, url in language_codes %}
@@ -88,9 +75,26 @@
 {%- endblock -%}
 
 {%- block content -%}
-    <div class="content" role="main">
     <div id="wrap">
-        <main class="{{ ' '.join(classes) }} {% if 'has-toc' in meta %}doc-toc{% endif %}">
+
+        {% set main_classes = [] %}
+        {% if pagename == master_doc %}  {# The current page is the homepage #}
+            {% set main_classes = main_classes + ['index'] %}
+        {% endif %}
+
+        {% if 'code-column' in meta %}  {# The page contains a 'memento' (side dynamic block) #}
+            {% set main_classes = main_classes + ['has_code_col'] %}
+        {% endif %}
+
+        {% if 'classes' in meta %}  {# The page source defines custom classes #}
+            {% set main_classes = main_classes + meta['classes'].split() %}
+        {% endif %}
+
+        {% if 'has-toc' in meta %}  {# The page contains a toctree #}
+            {% set main_classes = main_classes + ['doc-toc'] %}  {# TODO EDI do you use this ?#}
+        {% endif %}
+
+        <main class="{{ ' '.join(main_classes) }}">
             {% if pagename == master_doc %}
                 {# Custom landing page on the root of the documentation #}
                 {% include "layout_templates/homepage.html" %}
@@ -109,8 +113,8 @@
             {% endif %}
             <div id="mask"></div>
         </main>
-        {% if 'has-toc' not in meta and not (pagename in toc) %}
-            <aside id="o_on_page" class="o_on_page">
+        {% if 'has-toc' not in meta and not pagename in toc %}
+            <aside id="o_page_toc" class="o_page_toc">
                 {% include "layout_templates/page_toc.html" %}
             </aside>
         {% endif %}

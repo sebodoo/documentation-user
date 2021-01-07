@@ -78,7 +78,7 @@ header.o_main_header{
     @include media-breakpoint-up(lg) {
         left:0;
     }
-    @include o-transition($duration:.3s)
+    @include o-transition($duration:.3s);
     padding-top: 3rem;
     padding-left: 3rem;
     background-color: lighten($o-violet-dark, 70%) ;
@@ -313,7 +313,7 @@ header.o_main_header{
                     }
                 }
             }
-            + aside.o_on_page{
+            + aside.o_page_toc{
                 display: none;
             }
         }
@@ -391,7 +391,7 @@ header.o_main_header{
             }
         }
     }
-    aside.o_on_page {
+    aside.o_page_toc {
         display: none;
         @include media-breakpoint-up(lg) {
             display: block;
