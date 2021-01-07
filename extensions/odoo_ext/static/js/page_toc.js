@@ -17,6 +17,9 @@
 
             // Add the class `active` on reference (& its parents) whose heading is in the viewport
             _flagActiveTOCEntries(headingRefs, pageTOC);
+
+            // Set up Bootstrap's `accordion-*` classes
+            _setUpAccordion(pageTOC);
         }
     });
 
@@ -93,6 +96,28 @@
      */
     const _hidePageTOC = (pageTOC) => {
         pageTOC.style.visibility = 'hidden';
+    };
+
+    /**
+     * Add relevant Bootstrap's accordion-* classes on the page TOC.
+     *
+     * @param {HTMLElement} pageTOC - The tree of contents of the page
+     */
+    const _setUpAccordion = (pageTOC) => {
+        pageTOC.classList.add('accordion');
+        pageTOC.querySelectorAll('*').forEach(element => {
+            switch (element.tagName.toLowerCase()) {
+                case 'ul':
+                    element.classList.add('accordion-collapse');
+                    break;
+                case 'li':
+                    element.classList.add('accordion-item');
+                    break;
+                case 'a':
+                    element.classList.add('accordion-button');
+                    break;
+            }
+        });
     };
 
 })();
