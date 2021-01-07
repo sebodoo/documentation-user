@@ -27,9 +27,9 @@
      * Add the class `o_page_toc_title` on the first heading reference.
      *
      * @param {NodeList} headingRefs - The references to the headings of the page
-     * @param {HTMLElement} pageTOC - The tree of contents of the page
+     * @param {HTMLElement} pageToc - The tree of contents of the page
      */
-    const _flagActiveTOCEntries = (headingRefs, pageTOC) => {
+    const _flagActiveTOCEntries = (headingRefs, pageToc) => {
         const _findFocusedSectionHeadingRef = () => {
             let focusedSectionHeadingRef = headingRefs[0];
             headingRefs.forEach(headingRef => {
@@ -53,8 +53,8 @@
         }
 
         const _unflagAllTOCEntries = (pageTOC) => {
-            pageTOC.querySelectorAll('li').forEach(TOCEntry => {
-                TOCEntry.classList.remove('active');
+            pageTOC.querySelectorAll('li').forEach(tocEntry => {
+                tocEntry.classList.remove('active');
             })
         }
 
@@ -74,8 +74,8 @@
             if (focusedSectionHeadingRef.href === lastFocusedHeadingRef.href) {
                 return; // The focus didn't change
             }
-            _unflagAllTOCEntries(pageTOC);
-            _flagTOCEntryHierarchy(focusedSectionHeadingRef, pageTOC);
+            _unflagAllTOCEntries(pageToc);
+            _flagTOCEntryHierarchy(focusedSectionHeadingRef, pageToc);
             lastFocusedHeadingRef = focusedSectionHeadingRef; // Store to avoid updating later if the focus didn't change
         };
     };
@@ -115,6 +115,14 @@
                     break;
                 case 'a':
                     element.classList.add('accordion-button');
+                    const tocEntryList = element.nextSibling // The following <ul> element, if any
+                    if (tocEntryList) {
+                        // Create a new ID to allow the <a> to reference the related <ul>
+                        const tocEntryListId = `target_${element.getAttribute('href').substring(1)}`
+                        tocEntryList.setAttribute('id', tocEntryListId);
+                        element.setAttribute('data-bs-target', `#${tocEntryListId}`);
+                        element.setAttribute('data-bs-toggle', 'collapse');
+                    }
                     break;
             }
         });
