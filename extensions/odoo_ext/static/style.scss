@@ -353,6 +353,11 @@ header.o_main_header{
             }
 
         }
+
+//========//
+// Alerts //
+//========//
+
         // alert-info
         // alert-warning
         // alert-danger
@@ -363,8 +368,7 @@ header.o_main_header{
 
         .alert {
             position: relative;
-            max-width: 95%;
-            display: inline-block;
+            display: block;
             border-radius: 0;
             border-width: 0 0 0 3px;
             > h3, > .alert-title {
@@ -433,21 +437,20 @@ header.o_main_header{
                     color: shade-color($doc_exercise, 35%);
                 }
                 > .alert-title:before, > h3:before {
-                    @include transform(translate(0 , 0));
-                    top: 28px;
                     content: "\e709";
                 }
             }
             &.alert-go_to {
+                display: inline-block;
                 border-color: tint-color($secondary, 60%);
                 background-color: tint-color($secondary, 80%);
                 border-width: 2px;
                 margin: 2em auto;
                 a {
-                    color: darken($brand-info, 25%);
+                    color: shade-color($secondary, 35%);
                 }
                 > .alert-title, > h3 {
-                    color: $brand-info
+                    color: $secondary;
                 }
                 > .alert-title:before, > h3:before {
                     content: "\e70d";
@@ -455,6 +458,11 @@ header.o_main_header{
             }
         }
     }
+
+//==================//
+// On this page toc //
+//==================//
+
     aside.o_page_toc {
         display: none;
         @include media-breakpoint-up(lg) {
@@ -520,6 +528,10 @@ pre {
   margin: 0;
   margin-bottom: ($line-height-base / 2)rem;
 }
+
+//========//
+// Footer //
+//========//
 
 footer{
     > div {
