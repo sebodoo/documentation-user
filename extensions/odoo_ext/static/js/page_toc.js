@@ -40,8 +40,6 @@
                     lastFocus = newFocus;
                 }
             };
-
-            // TODO active check on menuitem click needed ?
         }
     });
 
@@ -83,7 +81,7 @@
     };
 
     /**
-     * Add the "active" class on the parent List Item (<li/>)
+     * Remove the "active" class on the parent List Item (<li/>)
      * of the given heading reference (<a>)
      *
      * @param {object} pageTOC
