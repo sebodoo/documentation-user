@@ -474,7 +474,7 @@ header.o_main_header{
             padding: 3rem;
             font-size: .9rem;
 
-            &.affix {
+            /* &.affix {
                 z-index            : 2;
                 position           : fixed;
                 backface-visibility: hidden;
@@ -482,20 +482,16 @@ header.o_main_header{
                 // @media (max-width:$screen-md-min) {
                 //     display: none;
                 // }
-            }
+            } */
         }
         h3 {
             text-transform: uppercase;
             font-weight: $fw_bold;
             font-size: 1rem;
             color: $gray-darker;
-            + ul > li > a {
-                display: none;
-            }
         }
         ul {
             list-style: none;
-            padding-left: 0;
 
             a {
                 display: block;
