@@ -12,26 +12,45 @@
                 return
             }
 
-            // Hide the TOC entry referring the title (<h1> heading)
+            // Allow to hide the TOC entry referring the title (<h1> heading)
             _flagFirstHeadingRef(headingRefs);
 
-            // Add the class `active` on reference (& its parents) whose heading is in the viewport
-            _flagActiveTOCEntries(headingRefs, pageTOC);
+            // Allow to automatically collapse and expand TOC entries
+            _prepareAccordion(pageTOC);
 
-            // Set up Bootstrap's `accordion-*` classes
-            _setUpAccordion(pageTOC);
+            // Allow to respectively highlight and expand the TOC entries and their related TOC
+            // entry list whose section is focused.
+            _flagActiveTocEntriesAndLists(headingRefs, pageTOC);
         }
     });
 
     /**
-     * Add the class `o_page_toc_title` on the first heading reference.
+     * Add the relevant classes on the TOC entries (and lists) whose section is focused.
+     *
+     * TOC entries whose section is focused (<li> elements) receive the `active` class and their
+     * related TOC entry list (<ul> elements) receive the `show` class.
      *
      * @param {NodeList} headingRefs - The references to the headings of the page
      * @param {HTMLElement} pageToc - The tree of contents of the page
      */
-    const _flagActiveTOCEntries = (headingRefs, pageToc) => {
-        const _findFocusedSectionHeadingRef = () => {
-            let focusedSectionHeadingRef = headingRefs[0];
+    const _flagActiveTocEntriesAndLists = (headingRefs, pageToc) => {
+
+        const _updateFlags = () => {
+            const activeHeadingRef = _findActiveHeadingRef();
+            if (
+                lastActiveHeadingRef // `undefined` on the first update
+                && activeHeadingRef.href === lastActiveHeadingRef.href
+            ) {
+                return; // The focus didn't change
+            }
+            _unflagAll(pageToc);
+            _flagActiveHierarchy(activeHeadingRef, pageToc);
+            // Store to avoid updating later if the focus didn't change
+            lastActiveHeadingRef = activeHeadingRef;
+        };
+
+        const _findActiveHeadingRef = () => {
+            let activeHeadingRef = headingRefs[0];
             headingRefs.forEach(headingRef => {
                 const href = headingRef.getAttribute('href');
                 if (href !== '#') {
@@ -43,41 +62,38 @@
                     // The focused section is the last one with a smaller offset from top than the
                     // current user scrolling offset.
                     if (section.offsetTop < window.pageYOffset) {
-                        focusedSectionHeadingRef = headingRef;
+                        activeHeadingRef = headingRef;
                     } else {
-                        return focusedSectionHeadingRef;
+                        return activeHeadingRef;
                     }
                 }
             });
-            return focusedSectionHeadingRef;
-        }
+            return activeHeadingRef;
+        };
 
-        const _unflagAllTOCEntries = (pageTOC) => {
-            pageTOC.querySelectorAll('li').forEach(tocEntry => {
-                tocEntry.classList.remove('active');
+        const _unflagAll = (pageToc) => {
+            pageToc.querySelectorAll('li,ul').forEach(element => {
+                element.classList.remove('active', 'show');
             })
-        }
+        };
 
-        const _flagTOCEntryHierarchy = (headingRef, pageTOC) => {
-            let parent = headingRef.parentElement; // Start by traversing up to the TOC entry
-            while (parent !== pageTOC) {
-                if (parent.tagName.toLowerCase() === 'li') { // Only flag TOC entries
-                    parent.classList.add('active');
+        const _flagActiveHierarchy = (headingRef, pageToc) => {
+            let tocEntry = headingRef.parentElement;
+            while (tocEntry !== pageToc) {
+                if (tocEntry.tagName === 'LI') {
+                    tocEntry.classList.add('active'); // Highlight all <li> in the active hierarchy
+                    const relatedTocEntryList = tocEntry.querySelector('ul');
+                    if (relatedTocEntryList) {
+                        relatedTocEntryList.classList.add('show'); // Expand all related <ul>
+                    }
                 }
-                parent = parent.parentElement;
+                tocEntry = tocEntry.parentElement;
             }
         };
 
-        let lastFocusedHeadingRef = headingRefs[0]; // The default focus is on the title reference
-        document.onscroll = () => {
-            const focusedSectionHeadingRef = _findFocusedSectionHeadingRef();
-            if (focusedSectionHeadingRef.href === lastFocusedHeadingRef.href) {
-                return; // The focus didn't change
-            }
-            _unflagAllTOCEntries(pageToc);
-            _flagTOCEntryHierarchy(focusedSectionHeadingRef, pageToc);
-            lastFocusedHeadingRef = focusedSectionHeadingRef; // Store to avoid updating later if the focus didn't change
-        };
+        let lastActiveHeadingRef = undefined; // Init as `undefined` to allow an initial update
+        _updateFlags(); // Flag initially active sections before the first scroll event
+        document.onscroll = _updateFlags;
     };
 
     /**
@@ -92,39 +108,26 @@
     /**
      * Entirely hide the local tree of contents.
      *
-     * @param {HTMLElement} pageTOC - The tree of contents of the page
+     * @param {HTMLElement} pageToc - The tree of contents of the page
      */
-    const _hidePageTOC = (pageTOC) => {
-        pageTOC.style.visibility = 'hidden';
+    const _hidePageTOC = (pageToc) => {
+        pageToc.style.visibility = 'hidden';
     };
 
     /**
-     * Add relevant Bootstrap's accordion-* classes on the page TOC.
+     * Update the page TOC entries and heading references to allow collapsing them.
      *
-     * @param {HTMLElement} pageTOC - The tree of contents of the page
+     * @param {HTMLElement} pageToc - The tree of contents of the page
      */
-    const _setUpAccordion = (pageTOC) => {
-        pageTOC.classList.add('accordion');
-        pageTOC.querySelectorAll('*').forEach(element => {
-            switch (element.tagName.toLowerCase()) {
-                case 'ul':
-                    element.classList.add('accordion-collapse');
-                    break;
-                case 'li':
-                    element.classList.add('accordion-item');
-                    break;
-                case 'a':
-                    element.classList.add('accordion-button');
-                    const tocEntryList = element.nextSibling // The following <ul> element, if any
-                    if (tocEntryList) {
-                        // Create a new ID to allow the <a> to reference the related <ul>
-                        const tocEntryListId = `o_target_${element.getAttribute('href').substring(1)}`
-                        tocEntryList.setAttribute('id', tocEntryListId);
-                        element.setAttribute('data-bs-target', `#${tocEntryListId}`);
-                        element.setAttribute('data-bs-toggle', 'collapse');
-                    }
-                    break;
-            }
+    const _prepareAccordion = (pageToc) => {
+        // Start at the second TOC entry list (<ul>) to avoid collapsing the entire TOC
+        const pageTocRoot = pageToc.querySelectorAll('ul')[1];
+        pageTocRoot.querySelectorAll('ul').forEach(tocEntryList => {
+            const relatedHeadingRef = tocEntryList.previousSibling; // The preceding <a> element
+            tocEntryList.id = `o_target_${relatedHeadingRef.getAttribute('href').substring(1)}`
+            tocEntryList.classList.add('collapse');
+            relatedHeadingRef.setAttribute('data-bs-target', `#${tocEntryList.id}`);
+            relatedHeadingRef.setAttribute('data-bs-toggle', 'collapse');
         });
     };
 
