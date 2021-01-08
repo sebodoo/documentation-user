@@ -118,7 +118,7 @@
                     const tocEntryList = element.nextSibling // The following <ul> element, if any
                     if (tocEntryList) {
                         // Create a new ID to allow the <a> to reference the related <ul>
-                        const tocEntryListId = `target_${element.getAttribute('href').substring(1)}`
+                        const tocEntryListId = `o_target_${element.getAttribute('href').substring(1)}`
                         tocEntryList.setAttribute('id', tocEntryListId);
                         element.setAttribute('data-bs-target', `#${tocEntryListId}`);
                         element.setAttribute('data-bs-toggle', 'collapse');
