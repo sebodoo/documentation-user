@@ -7,3 +7,4 @@ Purchase Agreements
 
    agreements/blanket_order
    agreements/call_for_tender
+   agreements/control_bills
