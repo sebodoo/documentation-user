@@ -98,7 +98,7 @@ The table below summarizes the requirements that have to be met for each partner
 +--------------------------------------------+------------------+--------------------+--------------------+--------------------+
 |                                            | Learning Partner | Official: Ready    | Official: Silver   | Official: Gold     |
 +============================================+==================+====================+====================+====================+
-| Annual New Odoo Enterprise Users Sold      |   0              |  10                | 50                 | 150                |
+| Annual New Odoo Enterprise Users Sold      |   0              |  10                | 75                 | 200                |
 +--------------------------------------------+------------------+--------------------+--------------------+--------------------+
 | Number of Certified Employees on at least  |   0              |  1                 |  2                 |  3                 |
 | one of the 3 last Odoo versions            |                  |                    |                    |                    |
