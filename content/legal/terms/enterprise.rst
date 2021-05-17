@@ -132,7 +132,7 @@ When a Bug is fixed in any Covered Version, Odoo SA commits to fixing the Bug in
 Covered Versions of the Software.
 
 Both parties acknowledge that as specified in the license of the Software and in the :ref:`liability`
-section of this Agreement, Odoo SA cannot be held liable for Bugs in the Software
+section of this Agreement, Odoo SA cannot be held liable for the consequences of the Bugs in the Software
 or in Covered Extra Modules.
 
 
